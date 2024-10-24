@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>SPA-BENCH: A COMPREHENSIVE BENCHMARK FOR SMARTPHONE AGENT EVALUATION</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title" style="font-size: 2.4rem;">SPA-BENCH:<br/>A COMPREHENSIVE BENCHMARK FOR <br/><u style="font-size: 3.0rem;">S</u>MART<u style="font-size: 3.0rem;">P</u>HONE <u style="font-size: 3.0rem;">A</u>GENT EVALUATION</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="#" target="_blank">Derek Yuen</a><sup>1 *</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Jingxuan Chen</a><sup>1 *</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Bin Xie</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Yuhao Yang</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Gongwei Chen</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Zhihao Wu</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Yixing Li</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Xurui Zhou</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Weiwen Liu</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Shuai Wang</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Kaiwen Zhou</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Rui Shao</a><sup>2,†</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Liqiang Nie</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Yasheng Wang</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Jianye Hao</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Jun Wang</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Kun Shao</a><sup>1,†</sup>
+              </span>
+              </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block"><sup>1</sup> Huawei Noah's Ark Lab<br><sup>2</sup> Harbin Institute of Technology, Shenzhen<br><sup>3</sup> University College London</span>
+                    <span class="eql-cntrb"><small><br><sup>* </sup>Equal Contribution</small></span>
+                    <span class="eql-cntrb"><small><br><sup>† </sup>Corresponding authors: shaorui@hit.edu.cn, shaokun2@huawei.com</small></span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- Arxiv PDF link -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2410.15164" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                    <!-- Supplementary PDF link -->
+                    <!-- <span class="link-block">
+                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Supplementary</span>
+                    </a>
+                  </span> -->
+
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a href="https://github.com/jingxuanchen916/Smartphone-Agent-Benchmark/tree/dev" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2410.15164" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              
+              <span class="link-block">
+                <a href="https://github.com/jingxuanchen916/Smartphone-Agent-Benchmark/tree/dev/data" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-list"></i>
+                </span>
+                <span>Task Collection</span>
+              </a>
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3 has-text-centered">Demo</h2>
+      <video poster="" id="tree" autoplay controls muted loop height="100%">
+        <!-- Your video here -->
+        <source src="static/videos/benchmark_demo_0910_1080p_compressed.mp4"
+        type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Smartphone agents are increasingly important for helping users control devices efficiently, with (Multimodal) Large Language Model (MLLM)-based approaches emerging as key contenders. Fairly comparing these agents is essential but challenging, requiring a varied task scope, the integration of agents with different implementations, and a generalisable evaluation pipeline to assess their strengths and weaknesses. In this paper, we present <b>SPA-BENCH</b>, a comprehensive <b>S</b>mart<b>P</b>hone <b>A</b>gent <b>Bench</b>mark designed to evaluate (M)LLM-based agents in an interactive environment that simulates real-world conditions. <b>SPA-BENCH</b> offers three key contributions: (1) A diverse set of tasks covering system and third-party apps in both English and Chinese, focusing on features commonly used in daily routines; (2) A plug-and-play framework enabling real-time agent interaction with Android devices, integrating over ten agents with the flexibility to add more; (3) A novel evaluation pipeline that automatically assesses agent performance across multiple dimensions, encompassing seven metrics related to task completion and resource consumption. Our extensive experiments across tasks and agents reveal challenges like interpreting mobile user interfaces, action grounding, memory retention, and execution costs. We propose future research directions to ease these difficulties, moving closer to real-world smartphone agent applications.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- Task Collection -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title has-text-centered">Task Collection</h2>
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <div class="content">
+            <h3 class="subtitle is-5">Key Features:</h3>
+            <ul>
+              <li>📦 300 Single-app Tasks and 40 Multi-app Tasks</li>
+              <li>🌐 66 Apps including 52 Third-party Apps, 7 Google Apps and 7 System Apps</li>
+              <li>📊 3 Difficulty Levels</li>
+              <li>🌍 2 Languages: Chinese and English Apps</li>
+              <li>🎨 Human Annotated Trajectories & Key Components</li>
+          </ul>
+        </div>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item">
+           <img src="static/images/dataset-demo-single.png" width="100%">
+           <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
+             A sample set of <b>single-app</b> tasks within the Deliveroo app, demonstrated by human. In this example, simpler tasks form the foundation for more complex ones, resulting in shared trajectories in the initial stages. The final screenshots for tasks of all three difficulty levels are highlighted in corresponding colours.
+           </h2>
+           </div>
+           <div class="item">
+            <img src="static/images/dataset-demo-cross.png" width="100%">
+            <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
+              A sample set of <b></b>cross-app</b> tasks, demonstrated by human.
+            </h2>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Task Collection -->
+ 
+<!-- Plug-and-Play Agent Framework -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title has-text-centered">Plug-and-Play Agent Framework</h2>
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <div class="content">
+            <h3 class="subtitle is-5">Key Features:</h3>
+            <ul>
+              <li>🤖 11 Smartphone Agents</li>
+              <li>🧩 Easy Integration of Your Own Agents with Minimal Code Changes</li>
+              <li>📱 Scalable Framework with Multi-device Support and Use of Emulators</li>
+              <li>📸 Android Snapshot for Local Environment & Data Reset</li>
+          </ul>
+        </div>
+         
+        <img src="static/images/agent-framework.png" width="100%">
+        <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
+         An overview of the agent framework using a multi-processing architecture. Each worker process connects an agent to an Android emulator, and they interact multiple times throughout the task (i.e., step 3 is repeated) until completion. The emulators are reset after the agent has executed all assigned tasks.
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Plug-and-Play Agent Framework -->
+ 
+<!-- Evaluation Pipeline -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title has-text-centered">Evaluation Pipeline</h2>
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <div class="content">
+            <h3 class="subtitle is-5">Key Features:</h3>
+            <ul>
+              <li>🔍 7 Metrics for Comprehensive Evaluation</li>
+              <li>📐 Automatic Coarse-and-Fine Success Detection Pipeline – Requires No Further Human Effort</li>
+              <li>🔀 Trajectory Splitting & Subtask Evaluation – Tailored for Long-Sequence Tasks</li>
+              <li>🏆 Single-app Tasks – Achieved F1-scores of 0.926 (English) and 0.884 (Chinese)</li>
+              <li>🌟 Cross-app Tasks – Achieved F1-scores of 0.833 (English) and 0.857 (Chinese)</li>
+          </ul>
+        </div>
+        <div id="results-carousel-2" class="carousel results-carousel">
+          <div class="item">
+           <img src="static/images/single-app-evaluation.png" width="100%">
+           <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
+            <b>Single-app</b> success detection pipeline. It features coarse detection through key component matching on execution screenshots and pre-annotated key components, followed by fine detection using MLLM evaluation given action information.
+           </h2>
+           </div>
+           <div class="item">
+            <img src="static/images/cross-app-evaluation.png" width="100%">
+            <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
+              <b>Cross-app</b> success detection pipeline that is based on subtasks instead of the entire task. The first stage involves splitting the full trajectory into segments, while the second stage checks the subtasks sequentially.
+            </h2>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Evaluation Pipeline -->
+
+<!-- Results -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title has-text-centered">Results</h2>
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+
+
+  <table id="results-table" border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
+    <thead>
+        <tr>
+            <th rowspan="2">Agent</th>
+            <th rowspan="2">Success (%)</th>
+            <th rowspan="2">Mean Step Ratio on Success</th>
+            <th colspan="3">Termination Reason</th>
+            <th colspan="2">Termination Inaccuracy</th>
+            <th rowspan="2">Mean Exec Time per Step (sec)</th>
+            <th rowspan="2">Mean Token Cost per Step (USD)</th>
+        </tr>
+        <tr>
+            <th>SRC (%)</th>
+            <th>MSR (%)</th>
+            <th>Error (%)</th>
+            <th>Premature (%)</th>
+            <th>Overdue (%)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color:#EFEFEF;">
+            <td colspan="10" style="text-align:center; font-style:italic;">Off-the-Shelf Model (GPT-4o)</td>
+        </tr>
+        <tr>
+            <td>AppAgent</td>
+            <td>0.340</td>
+            <td>1.33</td>
+            <td>0.327</td>
+            <td>0.507</td>
+            <td>0.166</td>
+            <td>0.347</td>
+            <td>0.197</td>
+            <td>26.5</td>
+            <td>0.014</td>
+        </tr>
+        <tr>
+            <td>AutoDroid</td>
+            <td>0.327</td>
+            <td>1.10</td>
+            <td>0.593</td>
+            <td>0.340</td>
+            <td>0.067</td>
+            <td>0.494</td>
+            <td>0.078</td>
+            <td>34.0</td>
+            <td><b>0.008</b></td>
+        </tr>
+        <tr>
+            <td>MobileAgent</td>
+            <td>0.387</td>
+            <td>1.24</td>
+            <td>0.367</td>
+            <td>0.633</td>
+            <td><b>0</b></td>
+            <td>0.109</td>
+            <td>0.095</td>
+            <td>27.1</td>
+            <td>0.053</td>
+        </tr>
+        <tr>
+            <td>MobileAgentV2</td>
+            <td>0.433</td>
+            <td>1.05</td>
+            <td>0.580</td>
+            <td>0.420</td>
+            <td><b>0</b></td>
+            <td>0.333</td>
+            <td>0.111</td>
+            <td>56.1</td>
+            <td>0.067</td>
+        </tr>
+        <tr>
+            <td>M3A</td>
+            <td><b>0.640</b></td>
+            <td><b>0.92</b></td>
+            <td><b>0.847</b></td>
+            <td><b>0.153</b></td>
+            <td><b>0</b></td>
+            <td>0.244</td>
+            <td><b>0</b></td>
+            <td>19.3</td>
+            <td>0.092</td>
+        </tr>
+        <tr>
+            <td>T3A</td>
+            <td>0.487</td>
+            <td>1.04</td>
+            <td>0.707</td>
+            <td>0.293</td>
+            <td><b>0</b></td>
+            <td>0.368</td>
+            <td>0.136</td>
+            <td><b>9.6</b></td>
+            <td>0.116</td>
+        </tr>
+        <tr>
+            <td>SeeAct</td>
+            <td>0.393</td>
+            <td>1.60</td>
+            <td>0.200</td>
+            <td>0.773</td>
+            <td>0.027</td>
+            <td><b>0.100</b></td>
+            <td>0.276</td>
+            <td>41.2</td>
+            <td>0.046</td>
+        </tr>
+        <tr style="background-color:#EFEFEF;">
+            <td colspan="10" style="text-align:center; font-style:italic;">Fine-tuned Model</td>
+        </tr>
+        <tr>
+            <td>Auto-UI</td>
+            <td>0.013</td>
+            <td>1.50</td>
+            <td>0.060</td>
+            <td>0.940</td>
+            <td><b>0</b></td>
+            <td>1.000</td>
+            <td>0.015</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>CogAgent</td>
+            <td>0.020</td>
+            <td>1.67</td>
+            <td>0.147</td>
+            <td>0.820</td>
+            <td>0.033</td>
+            <td>1.000</td>
+            <td>0.024</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>DigiRL</td>
+            <td>0.020</td>
+            <td>1.52</td>
+            <td>0.227</td>
+            <td>0.607</td>
+            <td>0.166</td>
+            <td>0.971</td>
+            <td>0.022</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>OdysseyAgent</td>
+            <td>0.053</td>
+            <td>2.00</td>
+            <td>0</td>
+            <td>1.000</td>
+            <td><b>0</b></td>
+            <td>-</td>
+            <td>0.013</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
+<h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
+  Task performance on single-app English tasks. SRC and MSR refer to Self-Reported Completion and Maximum Steps Reached, respectively. The execution time and token costs of the last four agents are omitted because they use locally hosted open-source models.
+</h2>
+
+
+  <div class="content">
+    <h3 class="subtitle is-6" style="margin-top: 1rem;">For full results and more details, please refer to our <a href="https://arxiv.org/pdf/2410.15164" target="_blank" style="color:#3273dc;">paper</a>.</h3>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!--End Results -->
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+@misc{chen2024spabench,
+  title={SPA-Bench: A Comprehensive Benchmark for SmartPhone Agent Evaluation}, 
+  author={Jingxuan Chen and Derek Yuen and Bin Xie and Yuhao Yang and Gongwei Chen and Zhihao Wu and Li Yixing and Xurui Zhou and Weiwen Liu and Shuai Wang and Kaiwen Zhou and Rui Shao and Liqiang Nie and Yasheng Wang and Jianye Hao and Jun Wang and Kun Shao},
+  year={2024},
+  eprint={2410.15164},
+  archivePrefix={arXiv},
+  primaryClass={cs.AI},
+  url={https://arxiv.org/abs/2410.15164}, 
+}
+      </code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
+
+<style>
+  #results-table{
+    background-color: #FFFFFF;
+  }
+  #results-table > thead > tr > th {
+    padding: 0.5rem;
+    text-align: center;
+  }
+  #results-table > tbody > tr > td {
+    padding: 0.5rem;
+  }
+  #results-table > tbody > tr > td:not(:first-child) {
+    text-align: center;
+  }
+</style>
