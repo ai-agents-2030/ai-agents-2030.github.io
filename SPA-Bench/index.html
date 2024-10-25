@@ -179,14 +179,116 @@
 
 <!-- Teaser video-->
 <section class="hero teaser">
-  <div class="container is-max-desktop">
+  <div class="container">
     <div class="hero-body">
-      <h2 class="title is-3 has-text-centered">Demo</h2>
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
-        <source src="static/videos/benchmark_demo_0910_1080p_compressed.mp4"
-        type="video/mp4">
-      </video>
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <!-- <h2 class="title is-3 has-text-centered">Overview</h2> -->
+          <div class="content">
+              <h3 class="subtitle is-5">Demo:</h3>
+              <video poster="" id="tree" autoplay controls muted loop height="100%">
+                <!-- Your video here -->
+                <source src="static/videos/benchmark_demo_0910_1080p_compressed.mp4"
+                type="video/mp4">
+              </video>
+
+              <h3 class="subtitle is-5">Comparison to Existing Benchmarks:</h3>
+
+              <table id="comparison-table" border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
+                <thead>
+                    <tr>
+                        <th>Dataset</th>
+                        <th>Third-party app?</th>
+                        <th>Cross-app?</th>
+                        <th>Chinese app?</th>
+                        <th>Difficulty level?</th>
+                        <th>Number of tasks</th>
+                        <th>Number of agents</th>
+                        <th>Number of metrics</th>
+                        <th>Free of hand-crafted validation?</th>
+                        <th>Information for success detection</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AndroidArena</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td style="color:#00FF00; font-weight: bold;">✓</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td>221</td>
+                        <td>1</td>
+                        <td>4</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td>Action only</td>
+                    </tr>
+                    <tr>
+                        <td>AndroidWorld</td>
+                        <td style="color:#00FF00; font-weight: bold;">✓</td>
+                        <td style="color:#00FF00; font-weight: bold;">✓</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td style="color:#00FF00; font-weight: bold;">✓</td>
+                        <td>116</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td>State only</td>
+                    </tr>
+                    <tr>
+                        <td>LlamaTouch</td>
+                        <td style="color:#00FF00; font-weight: bold;">✓</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td style="color:#00FF00; font-weight: bold;">✓</td>
+                        <td>495</td>
+                        <td>4</td>
+                        <td>1</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td>State only</td>
+                    </tr>
+                    <tr>
+                        <td>B-MoCA</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td>60</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td>State only</td>
+                    </tr>
+                    <tr>
+                        <td>MobileAgentBench</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td style="color:#00FF00; font-weight: bold;">✓</td>
+                        <td>100</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td style="color:#FF0000; font-weight: bold;">✗</td>
+                        <td>Action and State</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">SPA-Bench</td>
+                        <td style="color:#00FF00; font-weight: bold;">✓</td>
+                        <td style="color:#00FF00; font-weight: bold;">✓</td>
+                        <td style="color:#00FF00; font-weight: bold;">✓</td>
+                        <td style="color:#00FF00; font-weight: bold;">✓</td>
+                        <td>340</td>
+                        <td>11</td>
+                        <td>7</td>
+                        <td style="color:#00FF00; font-weight: bold;">✓</td>
+                        <td>Action and State</td>
+                    </tr>
+                </tbody>
+            </table>
+          
+            
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -543,15 +645,29 @@
   #results-table{
     background-color: #FFFFFF;
   }
-  #results-table > thead > tr > th {
+  #results-table > thead > tr > th, #comparison-table > thead > tr > th, #comparison-table > tbody > tr > td {
     padding: 0.5rem;
     text-align: center;
     vertical-align: middle;
   }
-  #results-table > tbody > tr > td {
+  #results-table > tbody > tr > td, #comparison-table > tbody > tr > td {
     padding: 0.5rem;
   }
-  #results-table > tbody > tr > td:not(:first-child) {
+  #results-table > tbody > tr > td:not(:first-child), #comparison-table > tbody > tr > td:not(:first-child) {
     text-align: center;
+  }
+  #comparison-table{
+    border: none;
+  }
+  #comparison-table > tbody > tr > td, #comparison-table > thead > tr > th{
+    border: none;
+  }
+  #comparison-table > thead > tr{
+    border-top: 2px solid #000000;
+    border-bottom: 1px solid #000000;
+  }
+  #comparison-table > tbody > tr:last-child{
+    border-top: 1px solid #000000;
+    border-bottom: 2px solid #000000;
   }
 </style>
