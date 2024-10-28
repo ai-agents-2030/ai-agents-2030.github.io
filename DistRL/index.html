@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>SPA-BENCH: A COMPREHENSIVE BENCHMARK FOR SMARTPHONE AGENT EVALUATION</title>
+  <title>DISTRL: AN ASYNCHRONOUS DISTRIBUTED REINFORCEMENT LEARNING FRAMEWORK FOR ON-DEVICE CONTROL AGENTS</title>
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
 
@@ -84,7 +84,7 @@
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                       <span class="link-block">
-                        <a href="https://arxiv.org/pdf/2410.15164" target="_blank"
+                        <a href="https://arxiv.org/pdf/2410.14803" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -106,7 +106,7 @@
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/jingxuanchen916/Smartphone-Agent-Benchmark/tree/dev" target="_blank"
+                    <a href="#" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -117,7 +117,7 @@
 
                 <!-- ArXiv abstract Link -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/2410.15164" target="_blank"
+                  <a href="https://arxiv.org/abs/2410.14803" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="ai ai-arxiv"></i>
@@ -125,16 +125,6 @@
                   <span>arXiv</span>
                 </a>
               </span>
-              
-              <span class="link-block">
-                <a href="https://github.com/jingxuanchen916/Smartphone-Agent-Benchmark/tree/dev/data" target="_blank"
-                class="external-link button is-normal is-rounded is-dark">
-                <span class="icon">
-                  <i class="fas fa-list"></i>
-                </span>
-                <span>Task Collection</span>
-              </a>
-            </span>
             </div>
           </div>
         </div>
@@ -158,101 +148,7 @@
                 <source src="static/videos/benchmark_demo_0910_1080p_compressed.mp4"
                 type="video/mp4">
               </video>
-
-              <h3 class="subtitle is-5">Comparison to Existing Benchmarks:</h3>
-
-              <table id="comparison-table" border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
-                <thead>
-                    <tr>
-                        <th>Dataset</th>
-                        <th>Third-party app?</th>
-                        <th>Cross-app?</th>
-                        <th>Chinese app?</th>
-                        <th>Difficulty level?</th>
-                        <th>Number of tasks</th>
-                        <th>Number of agents</th>
-                        <th>Number of metrics</th>
-                        <th>Free of hand-crafted validation?</th>
-                        <th>Information for success detection</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>AndroidArena</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td style="color:#00FF00; font-weight: bold;">✓</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td>221</td>
-                        <td>1</td>
-                        <td>4</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td>Action only</td>
-                    </tr>
-                    <tr>
-                        <td>AndroidWorld</td>
-                        <td style="color:#00FF00; font-weight: bold;">✓</td>
-                        <td style="color:#00FF00; font-weight: bold;">✓</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td style="color:#00FF00; font-weight: bold;">✓</td>
-                        <td>116</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td>State only</td>
-                    </tr>
-                    <tr>
-                        <td>LlamaTouch</td>
-                        <td style="color:#00FF00; font-weight: bold;">✓</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td style="color:#00FF00; font-weight: bold;">✓</td>
-                        <td>495</td>
-                        <td>4</td>
-                        <td>1</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td>State only</td>
-                    </tr>
-                    <tr>
-                        <td>B-MoCA</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td>60</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td>State only</td>
-                    </tr>
-                    <tr>
-                        <td>MobileAgentBench</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td style="color:#00FF00; font-weight: bold;">✓</td>
-                        <td>100</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td style="color:#FF0000; font-weight: bold;">✗</td>
-                        <td>Action and State</td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight:bold;">SPA-Bench</td>
-                        <td style="color:#00FF00; font-weight: bold;">✓</td>
-                        <td style="color:#00FF00; font-weight: bold;">✓</td>
-                        <td style="color:#00FF00; font-weight: bold;">✓</td>
-                        <td style="color:#00FF00; font-weight: bold;">✓</td>
-                        <td>340</td>
-                        <td>11</td>
-                        <td>7</td>
-                        <td style="color:#00FF00; font-weight: bold;">✓</td>
-                        <td>Action and State</td>
-                    </tr>
-                </tbody>
-            </table>
-          
-            
+           
           </div>
         </div>
       </div>
@@ -269,7 +165,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Smartphone agents are increasingly important for helping users control devices efficiently, with (Multimodal) Large Language Model (MLLM)-based approaches emerging as key contenders. Fairly comparing these agents is essential but challenging, requiring a varied task scope, the integration of agents with different implementations, and a generalisable evaluation pipeline to assess their strengths and weaknesses. In this paper, we present <b>SPA-BENCH</b>, a comprehensive <b>S</b>mart<b>P</b>hone <b>A</b>gent <b>Bench</b>mark designed to evaluate (M)LLM-based agents in an interactive environment that simulates real-world conditions. <b>SPA-BENCH</b> offers three key contributions: (1) A diverse set of tasks covering system and third-party apps in both English and Chinese, focusing on features commonly used in daily routines; (2) A plug-and-play framework enabling real-time agent interaction with Android devices, integrating over ten agents with the flexibility to add more; (3) A novel evaluation pipeline that automatically assesses agent performance across multiple dimensions, encompassing seven metrics related to task completion and resource consumption. Our extensive experiments across tasks and agents reveal challenges like interpreting mobile user interfaces, action grounding, memory retention, and execution costs. We propose future research directions to ease these difficulties, moving closer to real-world smartphone agent applications.
+            On-device control agents, especially on mobile devices, are responsible for operating mobile devices to fulfill users' requests, enabling seamless and intuitive interactions. Integrating Multimodal Large Language Models (MLLMs) into these agents enhances their ability to understand and execute complex commands, thereby improving user experience. However, fine-tuning MLLMs for on-device control presents significant challenges due to limited data availability and inefficient online training processes. This paper introduces DistRL, a novel framework designed to enhance the efficiency of online RL fine-tuning for mobile device control agents. DistRL employs centralized training and decentralized data acquisition to ensure efficient fine-tuning in the context of dynamic online interactions. Additionally, the framework is backed by our tailor-made RL algorithm, which effectively balances exploration with the prioritized utilization of collected data to ensure stable and robust training. Our experiments show that, on average, DistRL delivers a 3X improvement in training efficiency and enables training data collection 2.4X faster than the leading synchronous multi-machine methods. Notably, after training, DistRL achieves a 20% relative improvement in success rate compared to state-of-the-art methods on general Android tasks from an open benchmark, significantly outperforming existing approaches while maintaining the same training time. These results validate DistRL as a scalable and efficient solution, offering substantial improvements in both training efficiency and agent performance for real-world, in-the-wild device control tasks.
           </p>
         </div>
       </div>
@@ -277,107 +173,52 @@
   </div>
 </section>
 <!-- End paper abstract -->
-
-<!-- Task Collection -->
+ 
+<!-- Plug-and-Play Agent Framework -->
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title has-text-centered">Task Collection</h2>
+      <h2 class="title has-text-centered">A-RIDE: The Backbone of DistRL</h2>
       <div class="columns is-centered">
         <div class="column is-four-fifths">
           <div class="content">
-            <h3 class="subtitle is-5">Key Features:</h3>
-            <ul>
-              <li>📦 300 Single-app Tasks and 40 Cross-app Tasks</li>
-              <li>🌐 66 Apps including 52 Third-party Apps, 7 Google Apps and 7 System Apps</li>
-              <li>📊 3 Difficulty Levels</li>
-              <li>🌍 2 Languages – Chinese and English Apps</li>
-              <li>🎨 Human Annotated Trajectories & Key Components</li>
-          </ul>
-        </div>
-        <div id="results-carousel" class="carousel results-carousel">
-          <div class="item">
-           <img src="static/images/dataset-demo-single.png" width="100%">
-           <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
-             A sample set of <b>single-app</b> tasks within the Deliveroo app, demonstrated by human. In this example, simpler tasks form the foundation for more complex ones, resulting in shared trajectories in the initial stages. The final screenshots for tasks of all three difficulty levels are highlighted in corresponding colours.
-           </h2>
-           </div>
-           <div class="item">
-            <img src="static/images/dataset-demo-cross.png" width="100%">
-            <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
-              A sample set of <b></b>cross-app</b> tasks, demonstrated by human.
-            </h2>
-            </div>
+            <p>Our method employs advantage-based estimations to refine policy gradient updates, as an extension of Generalized Advantage Estimation (GAE) by Schulman et al. (2015), effectively balancing exploration and exploitation in the learning process.</p>
+            <p>By introducing a trace decay parameter, A-RIDE manages the bias-variance trade-off in advantage calculations, optimizing the stability and convergence of the policy. A-RIDE incorporates enhancements tailored to distributed, asynchronous environments, ensuring robust policy stability and efficient learning in complex device control tasks.</p>
+            <p>The <strong>Retrace(λ)</strong> update is defined as:</p>
+            <p><strong>Q(s<sub>t</sub>, a<sub>t</sub>) ← Q(s<sub>t</sub>, a<sub>t</sub>) + δ<sub>t</sub></strong>, where the correction term δ<sub>t</sub> is calculated as:</p>
+            <p style="text-align :center"><strong>δ<sub>t</sub> = ∑<sub>k=t</sub><sup>H</sup> γ<sup>k−t</sup> (∏<sub>i=t+1</sub><sup>k</sup> c<sub>i</sub>) [r<sub>k</sub> + γ Q(s<sub>k+1</sub>, a<sub>k+1</sub>) − Q(s<sub>k</sub>, a<sub>k</sub>)]</strong>.</p>
+            <p>Here, <strong>Q(s<sub>t</sub>, a<sub>t</sub>)</strong> is the estimated action-value function; γ ∈ [0, 1] is the discount factor; H is the time horizon; c<sub>i</sub> = λ min(1, ρ<sub>i</sub>) with λ ∈ [0, 1] being the trace decay parameter; ρ<sub>i</sub> = π(a<sub>i</sub>|s<sub>i</sub>) / μ(a<sub>i</sub>|s<sub>i</sub>) is the importance sampling ratio between the target policy π and the behavior policy μ.</p>
+            <p>To ensure effective exploration within the action space and prevent the generation of nonsensical or invalid commands, we incorporate entropy regularization into the actor loss function:</p>
+            <p style="text-align :center"><strong>ℒ = −𝔼<sub>μ</sub>[ρ<sub>t</sub> A(s<sub>t</sub>, a<sub>t</sub>) log π(a<sub>t</sub>|s<sub>t</sub>)] − β 𝔼<sub>μ</sub>[ℍ(π(a<sub>t</sub>|s<sub>t</sub>))] + λ 𝔼<sub>μ</sub>[𝒫<sub>invalid</sub>(a<sub>t</sub>)]</strong>,</p>
+            <p>where <strong>A(s<sub>t</sub>, a<sub>t</sub>)</strong> represents the advantage function, defined as the difference between the action-value function <strong>Q(s<sub>t</sub>, a<sub>t</sub>)</strong> and the state-value function <strong>V(s<sub>t</sub>)</strong>: <strong>A(s<sub>t</sub>, a<sub>t</sub>) = Q(s<sub>t</sub>, a<sub>t</sub>) − V(s<sub>t</sub>)</strong>. The entropy term ℍ promotes exploration, and 𝒫<sub>invalid</sub>(a<sub>t</sub>) imposes penalties on invalid actions. The parameters β and λ are tuned to balance exploration and stability.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End Task Collection -->
- 
+<!-- End Plug-and-Play Agent Framework -->
+
+
 <!-- Plug-and-Play Agent Framework -->
 <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title has-text-centered">Plug-and-Play Agent Framework</h2>
-      <div class="columns is-centered">
+      <h2 class="title has-text-centered">DistRL Pipeline</h2>
+      <div class="columns is-centered">         
         <div class="column is-four-fifths">
           <div class="content">
-            <h3 class="subtitle is-5">Key Features:</h3>
-            <ul>
-              <li>🤖 11 Smartphone Agents</li>
-              <li>🧩 Easy Integration of Your Own Agents with Minimal Code Changes</li>
-              <li>📱 Scalable Framework with Multi-device Support and Use of Emulators</li>
-              <li>📸 Android Snapshot for Local Environment & Data Reset</li>
-          </ul>
-        </div>
-         
-        <img src="static/images/agent-framework.png" width="100%">
-        <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
-         An overview of the agent framework using a multi-processing architecture. Each worker process connects an agent to an Android emulator, and they interact multiple times throughout the task (i.e., step 3 is repeated) until completion. The emulators are reset after the agent has executed all assigned tasks.
-        </h2>
+            <p><strong>DistRL</strong> adopts a distributed asynchronous setup where multiple worker agents generate trajectories under the behavior policy <strong>μ</strong> and send them to a central learner.</p>
+            <p>The trajectory reward is computed using the Monte Carlo estimate:</p>
+            <p style="text-align :center"><strong>L(V<sub>traj</sub>) = −𝔼<sub>ν</sub>[r(s<sub>H</sub>, a<sub>H</sub>) log V<sub>traj</sub>(s<sub>H</sub>, a<sub>H</sub>) + (1 − r(s<sub>H</sub>, a<sub>H</sub>)) log (1 − V<sub>traj</sub>(s<sub>H</sub>, a<sub>H</sub>))]</strong>.</p>
+            <p>The actor is updated using policy gradients based on advantage estimates, and enhanced <strong>Retrace</strong> corrections are applied for off-policy learning. This process is distributed asynchronously across worker nodes, ensuring efficient fine-tuning in environments with sparse rewards and distributed delays.</p>
+          </div>
+        <img src="static/images/backbone.PNG" width="100%">
       </div>
     </div>
   </div>
 </section>
 <!-- End Plug-and-Play Agent Framework -->
  
-<!-- Evaluation Pipeline -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title has-text-centered">Automatic Evaluation Pipeline</h2>
-      <div class="columns is-centered">
-        <div class="column is-four-fifths">
-          <div class="content">
-            <h3 class="subtitle is-5">Key Features:</h3>
-            <ul>
-              <li>🔍 7 Metrics for Comprehensive Evaluation</li>
-              <li>📐 Coarse-and-Fine Success Detection Pipeline – Requires No Further Human Effort</li>
-              <li>🔀 Trajectory Splitting & Subtask Evaluation – Tailored for Long-Sequence Tasks</li>
-              <li>🏆 Single-app Tasks – Achieved F1-scores of 0.926 (English) and 0.884 (Chinese)</li>
-              <li>🌟 Cross-app Tasks – Achieved F1-scores of 0.833 (English) and 0.857 (Chinese)</li>
-          </ul>
-        </div>
-        <div id="results-carousel-2" class="carousel results-carousel">
-          <div class="item">
-           <img src="static/images/single-app-evaluation.png" width="100%">
-           <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
-            <b>Single-app</b> success detection pipeline. It features coarse detection through key component matching on execution screenshots and pre-annotated key components, followed by fine detection using MLLM evaluation given action information.
-           </h2>
-           </div>
-           <div class="item">
-            <img src="static/images/cross-app-evaluation.png" width="100%">
-            <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
-              <b>Cross-app</b> success detection pipeline that is based on subtasks instead of the entire task. The first stage involves splitting the full trajectory into segments, while the second stage checks the subtasks sequentially.
-            </h2>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End Evaluation Pipeline -->
 
 <!-- Results -->
 <section class="hero is-small is-light">
@@ -390,171 +231,73 @@
 
   <table id="results-table" border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
     <thead>
-        <tr>
-            <th rowspan="2">Agent</th>
-            <th rowspan="2">Success (%)</th>
-            <th rowspan="2">Mean Step Ratio on Success</th>
-            <th colspan="3">Termination Reason</th>
-            <th colspan="2">Termination Inaccuracy</th>
-            <th rowspan="2">Mean Exec Time per Step (sec)</th>
-            <th rowspan="2">Mean Token Cost per Step (USD)</th>
-        </tr>
-        <tr>
-            <th>SRC (%)</th>
-            <th>MSR (%)</th>
-            <th>Error (%)</th>
-            <th>Premature (%)</th>
-            <th>Overdue (%)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr style="background-color:#EFEFEF;">
-            <td colspan="10" style="text-align:center; font-style:italic;">Off-the-Shelf Model (GPT-4o)</td>
-        </tr>
-        <tr>
-            <td>AppAgent</td>
-            <td>0.340</td>
-            <td>1.33</td>
-            <td>0.327</td>
-            <td>0.507</td>
-            <td>0.166</td>
-            <td>0.347</td>
-            <td>0.197</td>
-            <td>26.5</td>
-            <td>0.014</td>
-        </tr>
-        <tr>
-            <td>AutoDroid</td>
-            <td>0.327</td>
-            <td>1.10</td>
-            <td>0.593</td>
-            <td>0.340</td>
-            <td>0.067</td>
-            <td>0.494</td>
-            <td>0.078</td>
-            <td>34.0</td>
-            <td><b>0.008</b></td>
-        </tr>
-        <tr>
-            <td>MobileAgent</td>
-            <td>0.387</td>
-            <td>1.24</td>
-            <td>0.367</td>
-            <td>0.633</td>
-            <td><b>0</b></td>
-            <td>0.109</td>
-            <td>0.095</td>
-            <td>27.1</td>
-            <td>0.053</td>
-        </tr>
-        <tr>
-            <td>MobileAgentV2</td>
-            <td>0.433</td>
-            <td>1.05</td>
-            <td>0.580</td>
-            <td>0.420</td>
-            <td><b>0</b></td>
-            <td>0.333</td>
-            <td>0.111</td>
-            <td>56.1</td>
-            <td>0.067</td>
-        </tr>
-        <tr>
-            <td>M3A</td>
-            <td><b>0.640</b></td>
-            <td><b>0.92</b></td>
-            <td><b>0.847</b></td>
-            <td><b>0.153</b></td>
-            <td><b>0</b></td>
-            <td>0.244</td>
-            <td><b>0</b></td>
-            <td>19.3</td>
-            <td>0.092</td>
-        </tr>
-        <tr>
-            <td>T3A</td>
-            <td>0.487</td>
-            <td>1.04</td>
-            <td>0.707</td>
-            <td>0.293</td>
-            <td><b>0</b></td>
-            <td>0.368</td>
-            <td>0.136</td>
-            <td><b>9.6</b></td>
-            <td>0.116</td>
-        </tr>
-        <tr>
-            <td>SeeAct</td>
-            <td>0.393</td>
-            <td>1.60</td>
-            <td>0.200</td>
-            <td>0.773</td>
-            <td>0.027</td>
-            <td><b>0.100</b></td>
-            <td>0.276</td>
-            <td>41.2</td>
-            <td>0.046</td>
-        </tr>
-        <tr style="background-color:#EFEFEF;">
-            <td colspan="10" style="text-align:center; font-style:italic;">Fine-tuned Model</td>
-        </tr>
-        <tr>
-            <td>Auto-UI</td>
-            <td>0.013</td>
-            <td>1.50</td>
-            <td>0.060</td>
-            <td>0.940</td>
-            <td><b>0</b></td>
-            <td>1.000</td>
-            <td>0.015</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>CogAgent</td>
-            <td>0.020</td>
-            <td>1.67</td>
-            <td>0.147</td>
-            <td>0.820</td>
-            <td>0.033</td>
-            <td>1.000</td>
-            <td>0.024</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>DigiRL</td>
-            <td>0.020</td>
-            <td>1.52</td>
-            <td>0.227</td>
-            <td>0.607</td>
-            <td>0.166</td>
-            <td>0.971</td>
-            <td>0.022</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>OdysseyAgent</td>
-            <td>0.053</td>
-            <td>2.00</td>
-            <td>0</td>
-            <td>1.000</td>
-            <td><b>0</b></td>
-            <td>-</td>
-            <td>0.013</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-    </tbody>
+      <tr>
+          <th rowspan="2" style="padding:5px;">Framework Type</th>
+          <th rowspan="2" style="padding:5px;">Framework Name</th>
+          <th colspan="2" style="padding:5px;">General</th>
+          <th colspan="2" style="padding:5px;">Web Shopping</th>
+      </tr>
+      <tr>
+          <th style="padding:5px;">Training</th>
+          <th style="padding:5px;">Test</th>
+          <th style="padding:5px;">Training</th>
+          <th style="padding:5px;">Test</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td rowspan="2" style="padding:5px; vertical-align: middle;">Prompting</td>
+          <td style="padding:5px;text-align: left">AppAgent + GPT-4v</td>
+          <td style="padding:5px;">41.4</td>
+          <td style="padding:5px;">43.0</td>
+          <td style="padding:5px;">31.2</td>
+          <td style="padding:5px;">35.2</td>
+      </tr>
+      <tr>
+          <td style="padding:5px;">AppAgent + Gemini</td>
+          <td style="padding:5px;">39.1</td>
+          <td style="padding:5px;">45.3</td>
+          <td style="padding:5px;">30.5</td>
+          <td style="padding:5px;">32.0</td>
+      </tr>
+      <tr>
+          <td rowspan="4" style="padding:5px;vertical-align: middle">Learning</td>
+          <td style="padding:5px; text-align: left">AutoUI</td>
+          <td style="padding:5px;">38.3</td>
+          <td style="padding:5px;">40.6</td>
+          <td style="padding:5px;">42.2</td>
+          <td style="padding:5px;">44.5</td>
+      </tr>
+      <tr>
+          <td style="padding:5px;">DigiRL (single, online)</td>
+          <td style="padding:5px;">64.6 ± 1.5</td>
+          <td style="padding:5px;">59.9 ± 2.1</td>
+          <td style="padding:5px;">63.3 ± 1.5</td>
+          <td style="padding:5px;">59.6 ± 3.1</td>
+      </tr>
+      <tr>
+          <td style="padding:5px;">DigiRL (multi)</td>
+          <td style="padding:5px;">67.7 ± 1.3</td>
+          <td style="padding:5px;">61.2 ± 2.4</td>
+          <td style="padding:5px;">64.5 ± 1.1</td>
+          <td style="padding:5px;">59.9 ± 2.8</td>
+      </tr>
+      <tr>
+          <td style="padding:5px; font-weight:bold; font-style:italic;">DistRL (Ours)</td>
+          <td style="padding:5px; font-weight:bold;">75.5 ± 0.2</td>
+          <td style="padding:5px; font-weight:bold;">73.2 ± 1.1</td>
+          <td style="padding:5px; font-weight:bold;">69.8 ± 0.5</td>
+          <td style="padding:5px; font-weight:bold;">68.5 ± 1.7</td>
+      </tr>
+  </tbody>
 </table>
 <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
-  Task performance on single-app English tasks. SRC and MSR refer to Self-Reported Completion and Maximum Steps Reached, respectively. The execution time and token costs of the last four agents are omitted because they use locally hosted open-source models.
+  Main comparisons regarding the success rate of different agents across various settings. Each experiment is repeated three times and the mean and standard deviation are reported. Results are evaluated with our autonomous evaluator with the 128 user instructions in the train and test set.
 </h2>
 
 
   <div class="content">
-    <h3 class="subtitle is-6" style="margin-top: 1rem;">For full results and more details, please refer to our <a href="https://arxiv.org/pdf/2410.15164" target="_blank" style="color:#3273dc;">paper</a>.</h3>
+    <h3 class="subtitle is-6" style="margin-top: 1rem;">For full results and more details, please refer to our <a href="https://arxiv.org/abs/2410.14803" target="_blank" style="color:#3273dc;">paper</a>.</h3>
 </div>
 </div>
 </div>
@@ -568,14 +311,11 @@
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>
-@misc{chen2024spabench,
-  title={SPA-Bench: A Comprehensive Benchmark for SmartPhone Agent Evaluation}, 
-  author={Jingxuan Chen and Derek Yuen and Bin Xie and Yuhao Yang and Gongwei Chen and Zhihao Wu and Li Yixing and Xurui Zhou and Weiwen Liu and Shuai Wang and Kaiwen Zhou and Rui Shao and Liqiang Nie and Yasheng Wang and Jianye Hao and Jun Wang and Kun Shao},
-  year={2024},
-  eprint={2410.15164},
-  archivePrefix={arXiv},
-  primaryClass={cs.AI},
-  url={https://arxiv.org/abs/2410.15164}, 
+@article{wang2024distrl,
+  title={DistRL: An Asynchronous Distributed Reinforcement Learning Framework for On-Device Control Agents},
+  author={Wang, Taiyi and Wu, Zhihao and Liu, Jianheng and Hao, Jianye and Wang, Jun and Shao, Kun},
+  journal={arXiv preprint arXiv:2410.14803},
+  year={2024}
 }
       </code></pre>
     </div>
@@ -612,29 +352,15 @@
   #results-table{
     background-color: #FFFFFF;
   }
-  #results-table > thead > tr > th, #comparison-table > thead > tr > th, #comparison-table > tbody > tr > td {
+  #results-table > thead > tr > th {
     padding: 0.5rem;
     text-align: center;
     vertical-align: middle;
   }
-  #results-table > tbody > tr > td, #comparison-table > tbody > tr > td {
+  #results-table > tbody > tr > td {
     padding: 0.5rem;
   }
-  #results-table > tbody > tr > td:not(:first-child), #comparison-table > tbody > tr > td:not(:first-child) {
+  #results-table > tbody > tr > td:nth-child(n+2) {
     text-align: center;
-  }
-  #comparison-table{
-    border: none;
-  }
-  #comparison-table > tbody > tr > td, #comparison-table > thead > tr > th{
-    border: none;
-  }
-  #comparison-table > thead > tr{
-    border-top: 2px solid #000000;
-    border-bottom: 1px solid #000000;
-  }
-  #comparison-table > tbody > tr:last-child{
-    border-top: 1px solid #000000;
-    border-bottom: 2px solid #000000;
   }
 </style>
