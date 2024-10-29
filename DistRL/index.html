@@ -143,11 +143,16 @@
           <!-- <h2 class="title is-3 has-text-centered">Overview</h2> -->
           <div class="content">
               <h3 class="subtitle is-5">Demo:</h3>
-              <video poster="" id="tree" autoplay controls muted loop height="100%">
-                <!-- Your video here -->
-                <!-- <source src="" type="video/mp4"> -->
-              </video>
-           
+              <div style="text-align: center">
+                <video poster="" id="tree" autoplay controls muted loop height="100%" width="75%">
+                  <!-- Your video here -->
+                  <source src="static/videos/compare_demo_v4.mp4" type="video/mp4">
+                </video>
+                <video poster="" id="tree" autoplay controls muted loop height="100%" width="75%" style="margin-top: 1rem">
+                  <!-- Your video here -->
+                  <source src="static/videos/async_demo_v5_compressed.mp4" type="video/mp4">
+                </video>
+              </div>
           </div>
         </div>
       </div>
@@ -185,10 +190,10 @@
             <p>By introducing a trace decay parameter, A-RIDE manages the bias-variance trade-off in advantage calculations, optimizing the stability and convergence of the policy. A-RIDE incorporates enhancements tailored to distributed, asynchronous environments, ensuring robust policy stability and efficient learning in complex device control tasks.</p>
             <p>The <strong>Retrace(λ)</strong> update is defined as:</p>
             <p><strong>Q(s<sub>t</sub>, a<sub>t</sub>) ← Q(s<sub>t</sub>, a<sub>t</sub>) + δ<sub>t</sub></strong>, where the correction term δ<sub>t</sub> is calculated as:</p>
-            <p style="text-align :center"><strong>δ<sub>t</sub> = ∑<sub>k=t</sub><sup>H</sup> γ<sup>k−t</sup> (∏<sub>i=t+1</sub><sup>k</sup> c<sub>i</sub>) [r<sub>k</sub> + γ Q(s<sub>k+1</sub>, a<sub>k+1</sub>) − Q(s<sub>k</sub>, a<sub>k</sub>)]</strong>.</p>
+            <p style="text-align :center; font-size: 1.25rem">δ<sub>t</sub> = ∑<sub>k=t</sub><sup>H</sup> γ<sup>k−t</sup> (∏<sub>i=t+1</sub><sup>k</sup> c<sub>i</sub>) [r<sub>k</sub> + γ Q(s<sub>k+1</sub>, a<sub>k+1</sub>) − Q(s<sub>k</sub>, a<sub>k</sub>)].</p>
             <p>Here, <strong>Q(s<sub>t</sub>, a<sub>t</sub>)</strong> is the estimated action-value function; γ ∈ [0, 1] is the discount factor; H is the time horizon; c<sub>i</sub> = λ min(1, ρ<sub>i</sub>) with λ ∈ [0, 1] being the trace decay parameter; ρ<sub>i</sub> = π(a<sub>i</sub>|s<sub>i</sub>) / μ(a<sub>i</sub>|s<sub>i</sub>) is the importance sampling ratio between the target policy π and the behavior policy μ.</p>
             <p>To ensure effective exploration within the action space and prevent the generation of nonsensical or invalid commands, we incorporate entropy regularization into the actor loss function:</p>
-            <p style="text-align :center"><strong>ℒ = −𝔼<sub>μ</sub>[ρ<sub>t</sub> A(s<sub>t</sub>, a<sub>t</sub>) log π(a<sub>t</sub>|s<sub>t</sub>)] − β 𝔼<sub>μ</sub>[ℍ(π(a<sub>t</sub>|s<sub>t</sub>))] + λ 𝔼<sub>μ</sub>[𝒫<sub>invalid</sub>(a<sub>t</sub>)]</strong>,</p>
+            <p style="text-align :center; font-size: 1.25rem">ℒ = −𝔼<sub>μ</sub>[ρ<sub>t</sub> A(s<sub>t</sub>, a<sub>t</sub>) log π(a<sub>t</sub>|s<sub>t</sub>)] − β 𝔼<sub>μ</sub>[ℍ(π(a<sub>t</sub>|s<sub>t</sub>))] + λ 𝔼<sub>μ</sub>[𝒫<sub>invalid</sub>(a<sub>t</sub>)],</p>
             <p>where <strong>A(s<sub>t</sub>, a<sub>t</sub>)</strong> represents the advantage function, defined as the difference between the action-value function <strong>Q(s<sub>t</sub>, a<sub>t</sub>)</strong> and the state-value function <strong>V(s<sub>t</sub>)</strong>: <strong>A(s<sub>t</sub>, a<sub>t</sub>) = Q(s<sub>t</sub>, a<sub>t</sub>) − V(s<sub>t</sub>)</strong>. The entropy term ℍ promotes exploration, and 𝒫<sub>invalid</sub>(a<sub>t</sub>) imposes penalties on invalid actions. The parameters β and λ are tuned to balance exploration and stability.</p>
         </div>
       </div>
@@ -208,7 +213,7 @@
           <div class="content">
             <p><strong>DistRL</strong> adopts a distributed asynchronous setup where multiple worker agents generate trajectories under the behavior policy <strong>μ</strong> and send them to a central learner.</p>
             <p>The trajectory reward is computed using the Monte Carlo estimate:</p>
-            <p style="text-align :center"><strong>L(V<sub>traj</sub>) = −𝔼<sub>ν</sub>[r(s<sub>H</sub>, a<sub>H</sub>) log V<sub>traj</sub>(s<sub>H</sub>, a<sub>H</sub>) + (1 − r(s<sub>H</sub>, a<sub>H</sub>)) log (1 − V<sub>traj</sub>(s<sub>H</sub>, a<sub>H</sub>))]</strong>.</p>
+            <p style="text-align :center; font-size: 1.25rem; font-weight: normal">L(V<sub>traj</sub>) = −𝔼<sub>ν</sub>[r(s<sub>H</sub>, a<sub>H</sub>) log V<sub>traj</sub>(s<sub>H</sub>, a<sub>H</sub>) + (1 − r(s<sub>H</sub>, a<sub>H</sub>)) log (1 − V<sub>traj</sub>(s<sub>H</sub>, a<sub>H</sub>))].</p>
             <p>The actor is updated using policy gradients based on advantage estimates, and enhanced <strong>Retrace</strong> corrections are applied for off-policy learning. This process is distributed asynchronously across worker nodes, ensuring efficient fine-tuning in environments with sparse rewards and distributed delays.</p>
           </div>
         <img src="static/images/backbone.PNG" width="100%">
