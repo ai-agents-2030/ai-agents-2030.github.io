@@ -55,7 +55,7 @@
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                Taiyi Wang<sup>1 2 * †</sup>,
+                <a href="https://www.linkedin.com/in/taiyi-wang-3438121a2/" target="_blank">Taiyi Wang</a><sup>1 2 * †</sup>,
               </span>
               <span class="author-block">
                 Zhihao Wu<sup>3 *</sup>,
@@ -214,7 +214,7 @@
             <p>By introducing a trace decay parameter, A-RIDE manages the bias-variance trade-off in advantage calculations, optimizing the stability and convergence of the policy. A-RIDE incorporates enhancements tailored to distributed, asynchronous environments, ensuring robust policy stability and efficient learning in complex device control tasks.</p>
             <p>The <strong>Retrace(<span style="font-family: math">λ</span>)</strong> update is defined as:</p>
             <p><span style="font-family: math">Q(s<sub>t</sub>, a<sub>t</sub>) ← Q(s<sub>t</sub>, a<sub>t</sub>) + δ<sub>t</sub></span>, where the correction term δ<sub>t</sub> is calculated as:</p>
-            <p style="text-align :center; font-size: 1.25rem; font-family: math">δ<sub>t</sub> = ∑<sub>k=t</sub><sup>H</sup> γ<sup>k−t</sup> (∏<sub>i=t+1</sub><sup>k</sup> c<sub>i</sub>) [r<sub>k</sub> + γ Q(s<sub>k+1</sub>, a<sub>k+1</sub>) − Q(s<sub>k</sub>, a<sub>k</sub>)].</p>
+            <p style="text-align :center; font-size: 1.25rem; font-family: math">δ<sub>t</sub> = ∑<span style="position: relative"><sub>k=t</sub><sup style="position: absolute; left: 0">H</sup></span> γ<sup>k−t</sup> (∏<span style="position: relative"><sub>i=t+1</sub><sup style="position: absolute; left: 0">k</sup></span> c<sub>i</sub>) [r<sub>k</sub> + γ Q(s<sub>k+1</sub>, a<sub>k+1</sub>) − Q(s<sub>k</sub>, a<sub>k</sub>)].</p>
             <p>Here, <span style="font-family: math">Q(s<sub>t</sub>, a<sub>t</sub>)</span> is the estimated action-value function; γ ∈ [0, 1] is the discount factor; H is the time horizon; <span style="font-family: math">c<sub>i</sub> = λ min(1, ρ<sub>i</sub>)</span> with <span style="font-family: math">λ ∈ [0, 1]</span> being the trace decay parameter; <span style="font-family: math">ρ<sub>i</sub> = π(a<sub>i</sub>|s<sub>i</sub>) / μ(a<sub>i</sub>|s<sub>i</sub>)</span> is the importance sampling ratio between the target policy π and the behavior policy μ.</p>
             <p>To ensure effective exploration within the action space and prevent the generation of nonsensical or invalid commands, we incorporate entropy regularization into the actor loss function:</p>
             <p style="text-align :center; font-size: 1.25rem; font-family: math">ℒ = −𝔼<sub>μ</sub>[ρ<sub>t</sub> A(s<sub>t</sub>, a<sub>t</sub>) log π(a<sub>t</sub>|s<sub>t</sub>)] − β 𝔼<sub>μ</sub>[ℍ(π(a<sub>t</sub>|s<sub>t</sub>))] + λ 𝔼<sub>μ</sub>[𝒫<sub>invalid</sub>(a<sub>t</sub>)],</p>
@@ -395,5 +395,23 @@
   }
   #results-table > tbody > tr > td:nth-child(n+2) {
     text-align: center;
+  }
+  /* Add these new mobile-responsive rules */
+  @media screen and (max-width: 768px) {
+    #results-table {
+      font-size: 0.75rem;  /* Reduce font size on mobile */
+    }
+    
+    #results-table > thead > tr > th,
+    #results-table > tbody > tr > td {
+      padding: 0.2rem;  /* Reduce padding on mobile */
+    }
+
+    /* Create horizontal scroll for table on mobile */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
   }
 </style>
