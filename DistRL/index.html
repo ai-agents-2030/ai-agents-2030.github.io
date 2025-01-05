@@ -186,16 +186,25 @@
       <div class="columns is-centered">
         <div class="column is-four-fifths">
           <div class="content">
-            <p>Our method employs advantage-based estimations to refine policy gradient updates, as an extension of Generalized Advantage Estimation (GAE) by Schulman et al. (2015), effectively balancing exploration and exploitation in the learning process.</p>
-            <p>By introducing a trace decay parameter, A-RIDE manages the bias-variance trade-off in advantage calculations, optimizing the stability and convergence of the policy. A-RIDE incorporates enhancements tailored to distributed, asynchronous environments, ensuring robust policy stability and efficient learning in complex device control tasks.</p>
-            <p>The <strong>Retrace(<span style="font-family: math">λ</span>)</strong> update is defined as:</p>
-            <p><span style="font-family: math">Q(s<sub>t</sub>, a<sub>t</sub>) ← Q(s<sub>t</sub>, a<sub>t</sub>) + δ<sub>t</sub></span>, where the correction term δ<sub>t</sub> is calculated as:</p>
-            <p style="text-align :center; font-size: 1.25rem; font-family: math">δ<sub>t</sub> = ∑<sub>k=t</sub><sup>H</sup> γ<sup>k−t</sup> (∏<sub>i=t+1</sub><sup>k</sup> c<sub>i</sub>) [r<sub>k</sub> + γ Q(s<sub>k+1</sub>, a<sub>k+1</sub>) − Q(s<sub>k</sub>, a<sub>k</sub>)].</p>
-            <p>Here, <span style="font-family: math">Q(s<sub>t</sub>, a<sub>t</sub>)</span> is the estimated action-value function; γ ∈ [0, 1] is the discount factor; H is the time horizon; <span style="font-family: math">c<sub>i</sub> = λ min(1, ρ<sub>i</sub>)</span> with <span style="font-family: math">λ ∈ [0, 1]</span> being the trace decay parameter; <span style="font-family: math">ρ<sub>i</sub> = π(a<sub>i</sub>|s<sub>i</sub>) / μ(a<sub>i</sub>|s<sub>i</sub>)</span> is the importance sampling ratio between the target policy π and the behavior policy μ.</p>
-            <p>To ensure effective exploration within the action space and prevent the generation of nonsensical or invalid commands, we incorporate entropy regularization into the actor loss function:</p>
+            <p style="text-align: justify;">Our method employs advantage-based estimations to refine policy gradient updates, as an extension of Generalized Advantage Estimation (GAE) by Schulman et al. (2015), to better suit asynchronous, distributed environments common in device control tasks.</p>
+
+            <h4>Advantage Computation</h4>
+
+            <p style="text-align: justify;">With the trajectory-level rewards and state value estimates obtained, we compute the advantage function A(s<sub>t</sub>, a<sub>t</sub>) using one-step estimation:</p>
+            
+            <p style="text-align :center; font-size: 1.25rem; font-family: math">A(s<sub>t</sub>, a<sub>t</sub>) = Q(s<sub>t</sub>,a<sub>t</sub>) - V(s<sub>t</sub>) = r(s<sub>t</sub>, a<sub>t</sub>) + γV(s<sub>t+1</sub>) - V(s<sub>t</sub>)</span></p>
+            
+            <p>which correctly represents the advantage function as per the policy gradient theorem. Here, r(s<sub>t</sub>, a<sub>t</sub>) includes signals of immediate rewards. The advantage and value functions are further modified by off-policy corrections.</p>
+            
+            <h4>Policy Optimization with Robust Regularization</h4>
+            
+            <p>Finally, the policy network optimizes the following loss:</p>
+            
             <p style="text-align :center; font-size: 1.25rem; font-family: math">ℒ = −𝔼<sub>μ</sub>[ρ<sub>t</sub> A(s<sub>t</sub>, a<sub>t</sub>) log π(a<sub>t</sub>|s<sub>t</sub>)] − β 𝔼<sub>μ</sub>[ℍ(π(a<sub>t</sub>|s<sub>t</sub>))] + λ 𝔼<sub>μ</sub>[𝒫<sub>invalid</sub>(a<sub>t</sub>)],</p>
-            <p>where <span style="font-family: math">A(s<sub>t</sub>, a<sub>t</sub>)</span> represents the advantage function, defined as the difference between the action-value function <span style="font-family: math">Q(s<sub>t</sub>, a<sub>t</sub>)</span> and the state-value function <span style="font-family: math">V(s<sub>t</sub>)</span>: <span style="font-family: math">A(s<sub>t</sub>, a<sub>t</sub>) = Q(s<sub>t</sub>, a<sub>t</sub>) − V(s<sub>t</sub>)</span>. The entropy term ℍ promotes exploration, and 𝒫<sub>invalid</sub>(a<sub>t</sub>) imposes penalties on invalid actions. The parameters β and λ are tuned to balance exploration and stability.</p>
+                        
+            <p style="text-align: justify;">where <span style="font-family: math">ρ<sub>t</sub> = π(a<sub>t</sub>|s<sub>t</sub>)/μ(a<sub>t</sub>|s<sub>t</sub>)</span> is the importance sampling ratio between the target policy π and the behavior policy μ, ℍ is the entropy term for prevention of overfitting, 𝒫<sub>invalid</sub>(a<sub>t</sub>) imposes a penalty on actions deemed invalid based on task-specific criteria, β controls the strength of entropy regularization, and λ modulates the penalty's influence. The penalty is assigned using validation through pre-trained LLMs like Gemini, ensuring that inappropriate actions are penalized. This formulation encourages the agent to explore a diverse set of actions while constraining it to generate valid and meaningful commands, thereby enhancing both exploration and policy robustness when dealing with online non-stationarities.</p>
         </div>
+        <img src="static/images/backbone.PNG" width="100%">
       </div>
     </div>
   </div>
@@ -207,16 +216,28 @@
 <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title has-text-centered">DistRL Pipeline</h2>
       <div class="columns is-centered">         
         <div class="column is-four-fifths">
           <div class="content">
-            <p><strong>DistRL</strong> adopts a distributed asynchronous setup where multiple worker agents generate trajectories under the behavior policy <strong>μ</strong> and send them to a central learner.</p>
-            <p>The trajectory reward is computed using the Monte Carlo estimate:</p>
-            <p style="text-align :center; font-size: 1.25rem; font-family: math">L(V<sub>traj</sub>) = −𝔼<sub>ν</sub>[r(s<sub>H</sub>, a<sub>H</sub>) log V<sub>traj</sub>(s<sub>H</sub>, a<sub>H</sub>) + (1 − r(s<sub>H</sub>, a<sub>H</sub>)) log (1 − V<sub>traj</sub>(s<sub>H</sub>, a<sub>H</sub>))].</p>
-            <p>The actor is updated using policy gradients based on advantage estimates, and enhanced <strong>Retrace</strong> corrections are applied for off-policy learning. This process is distributed asynchronously across worker nodes, ensuring efficient fine-tuning in environments with sparse rewards and distributed delays.</p>
+
+            <h4>Off-policy correction: Retrace</h4>
+
+            <p style="text-align: justify;">To enhance the estimation of the state-value function V(s<sub>t</sub>) in off-policy and asynchronous settings, we apply Retrace(λ) corrections directly to V(s<sub>t</sub>). The Retrace algorithm extends the <strong>TD</strong>(λ) method to off-policy learning by incorporating importance sampling ratios and a trace decay parameter λ. Specifically, we update V(s<sub>t</sub>) using the correction term δ<sub>t</sub>, computed as:</p>
+
+            <p style="text-align: center; font-size: 1.25rem; font-family: math">V(s<sub>t</sub>) ← V(s<sub>t</sub>) + δ<sub>t</sub></p>
+
+            <p style="text-align: center; font-size: 1.25rem; font-family: math">δ<sub>t</sub> = Σ<sub>k=t</sub><sup>H</sup> γ<sup>k-t</sup> (∏<sub>i=t+1</sub><sup>k</sup> c<sub>i</sub>) [r<sub>k</sub> + γV(s<sub>k+1</sub>) - V(s<sub>k</sub>)]</p>
+
+            <p style="text-align: justify;">where c<sub>i</sub> = λ min(1, ρ<sub>i</sub>) with λ ∈ [0,1] being the trace decay parameter, and ρ<sub>i</sub> is the importance sampling ratio as mentioned before. This correction term effectively adjusts the value estimates using future rewards and importance sampling, enabling off-policy learning while mitigating variance due to importance weights. By applying Retrace(λ), we improve the estimation of V(s<sub>t</sub>) in off-policy settings, enhancing the stability and convergence of the value network.</p>
+
+            <h4>Distributed Prioritized Experience Replay (DPER)</h4>
+
+            <p style="text-align: justify;">To improve sample efficiency, we employ <strong>Distributed Prioritized Experience Replay (DPER)</strong>. For each trajectory τ = {(s<sub>t</sub>, a<sub>t</sub>, r<sub>t</sub>, s<sub>t+1</sub>)}<sub>t=0</sub><sup>H</sup>, we compute the priority p(τ) as:</p>
+
+            <p style="text-align: center; font-size: 1.25rem; font-family: math">p(τ) = w<sub>1</sub>|δ̄| + w<sub>2</sub>ρ̄ + w<sub>3</sub>ℍ̄</p>
+
+            <p style="text-align: justify;">where |δ̄| is the average absolute temporal-difference (TD) error over the trajectory, calculated as δ<sub>t</sub> = r<sub>t</sub> + γV(s<sub>t+1</sub>) - V(s<sub>t</sub>); ρ̄ is the average importance sampling ratio ρ<sub>t</sub>; and ℍ̄ is the average policy entropy, ℍ<sub>t</sub> = -log π(a<sub>t</sub>|s<sub>t</sub>), encouraging exploration by encouraging policy uncertainty, thus avoiding early convergence to suboptimal policies during training in dynamic environments. The weights w<sub>1</sub>, w<sub>2</sub>, and w<sub>3</sub> balance the contributions of each component, which is selected by grid-search (See Appendix: Hyperparameters). Trajectories with higher priorities are replayed more frequently, focusing learning on the most informative experiences. Priorities are periodically updated based on the latest policy, recalculating them to focus learning on the most informative experiences, ensuring continual adaptation to evolving behavior policies.</p>
           </div>
-        <img src="static/images/backbone.PNG" width="100%">
       </div>
     </div>
   </div>
