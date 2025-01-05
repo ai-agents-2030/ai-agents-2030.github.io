@@ -228,7 +228,6 @@
                         
             <p style="text-align: justify;">where <span style="font-family: math">ρ<sub>t</sub> = π(a<sub>t</sub>|s<sub>t</sub>)/μ(a<sub>t</sub>|s<sub>t</sub>)</span> is the importance sampling ratio between the target policy π and the behavior policy μ, ℍ is the entropy term for prevention of overfitting, 𝒫<sub>invalid</sub>(a<sub>t</sub>) imposes a penalty on actions deemed invalid based on task-specific criteria, β controls the strength of entropy regularization, and λ modulates the penalty's influence. The penalty is assigned using validation through pre-trained LLMs like Gemini, ensuring that inappropriate actions are penalized. This formulation encourages the agent to explore a diverse set of actions while constraining it to generate valid and meaningful commands, thereby enhancing both exploration and policy robustness when dealing with online non-stationarities.</p>
         </div>
-        <img src="static/images/backbone.PNG" width="100%">
       </div>
     </div>
   </div>
@@ -242,6 +241,7 @@
     <div class="container">
       <div class="columns is-centered">         
         <div class="column is-four-fifths">
+          <img src="static/images/backbone.PNG" width="100%">
           <div class="content">
 
             <h4>Off-policy correction: Retrace</h4>
