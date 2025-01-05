@@ -4,23 +4,23 @@
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="DESCRIPTION META TAG">
-  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
-  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
-  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <meta name="description" content="DistRL: An Asynchronous Distributed Reinforcement Learning Framework for On-Device Control Agents">
+  <meta property="og:title" content="DistRL: An Asynchronous Distributed Reinforcement Learning Framework for On-Device Control Agents"/>
+  <meta property="og:description" content="An Asynchronous Distributed Reinforcement Learning Framework for On-Device Control Agents"/>
+  <meta property="og:url" content="https://ai-agents-2030.github.io/DistRL/"/>
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <!-- <meta property="og:image" content="static/image/your_banner_image.png" />
   <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:height" content="630"/> -->
 
 
-  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG"> -->
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
-  <meta name="twitter:card" content="summary_large_image">
+  <!-- <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image"> -->
   <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="keywords" content="DistRL, Asynchronous Distributed Reinforcement Learning, On-Device Control Agents">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -51,7 +51,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title" style="font-size: 2.4rem;">DISTRL: AN ASYNCHRONOUS DISTRIBUTED REINFORCEMENT LEARNING FRAMEWORK FOR ON-DEVICE CONTROL AGENTS</h1>
+            <h1 class="title is-1 publication-title" style="font-size: 2.4rem;">DISTRL: <br/>AN ASYNCHRONOUS DISTRIBUTED <br/>REINFORCEMENT LEARNING FRAMEWORK <br/>FOR ON-DEVICE CONTROL AGENTS</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
@@ -84,7 +84,7 @@
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                       <span class="link-block">
-                        <a href="https://arxiv.org/pdf/2410.14803" target="_blank"
+                        <a href="https://ai-agents-2030.github.io/DistRL/static/documents/DistRL_arxiv.pdf" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -140,14 +140,16 @@
     <div class="hero-body">
       <div class="columns is-centered">
         <div class="column is-four-fifths">
-          <!-- <h2 class="title is-3 has-text-centered">Overview</h2> -->
           <div class="content">
-              <h3 class="subtitle is-5">Demo:</h3>
+              <h3 class="subtitle is-5">Comparison between DistRL Agent and DigiRL Agent on Real Web Browsing Task:</h3>
               <div style="text-align: center">
                 <video poster="" id="tree" autoplay controls muted loop height="100%" width="75%">
                   <!-- Your video here -->
                   <source src="static/videos/compare_demo_v4.mp4" type="video/mp4">
                 </video>
+              </div>
+              <h3 class="subtitle is-5">Host-worker Running Loop Illustrations for DistRL Asynchronous Framework:</h3>
+              <div style="text-align: center">
                 <video poster="" id="tree" autoplay controls muted loop height="100%" width="75%" style="margin-top: 1rem">
                   <!-- Your video here -->
                   <source src="static/videos/async_demo_v5_compressed.mp4" type="video/mp4">
@@ -178,8 +180,30 @@
 </section>
 <!-- End paper abstract -->
  
-<!-- Plug-and-Play Agent Framework -->
+<!-- System Design -->
 <section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title has-text-centered">System Design</h2>
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <div class="content">            
+            <b>DistRL</b> is an asynchronous distributed reinforcement learning framework that decouples trajectory collection from policy learning. The framework consists of a central <b>Host Learner</b> equipped with GPUs for policy training, and multiple heterogeneous <b>Workers</b> running Android emulators or connected to mobile devices. This separation optimizes efficiency by aligning tasks with appropriate hardware - <b>CPU-intensive</b> environment interactions on worker machines and <b>GPU-accelerated</b> policy training on the host server. The host maintains a <b>Circular Replay Buffer</b> for storing trajectories and uses a <b>FIFO Queue</b> to manage incoming experiences from workers efficiently.
+          </div>          
+          <img src="static/images/system-design.PNG" width="100%">
+        
+          <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
+            The workers operate in parallel through multi-threading, with each thread executing the latest policy received from the <b>Host Learner</b>. Workers collect trajectories during environment interactions and asynchronously send them back to the host for training. The framework demonstrates excellent scalability - with <b>two 96 vCPU machines</b> supporting up to <b>32 concurrent emulators</b> and nearly linear scaling with worker performance.
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End System Design -->
+ 
+<!-- A-RIDE -->
+<section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
       <h2 class="title has-text-centered">A-RIDE: The Backbone of DistRL</h2>
@@ -209,11 +233,11 @@
     </div>
   </div>
 </section>
-<!-- End Plug-and-Play Agent Framework -->
+<!-- End A-RIDE -->
 
 
-<!-- Plug-and-Play Agent Framework -->
-<section class="hero is-small is-light">
+<!-- DistRL Pipeline -->
+<section class="hero is-small">
   <div class="hero-body">
     <div class="container">
       <div class="columns is-centered">         
@@ -242,91 +266,96 @@
     </div>
   </div>
 </section>
-<!-- End Plug-and-Play Agent Framework -->
+<!-- End DistRL Pipeline -->
  
 
 <!-- Results -->
-<section class="hero is-small">
+<section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
       <h2 class="title has-text-centered">Results</h2>
       <div class="columns is-centered">
+        <div class="column is-three-fifths">
+          <img src="static/images/results-plot.PNG" width="100%">
+          <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
+            Training performance (32 emulators) between the current SoTA (DigiRL) and DistRL, highlighting the enhanced efficiency of DistRL’s distributed framework during online training. (a) Wall-clock time comparison; (b) Training efficiency comparison; (c) Accumulated trajectories collection ability comparison; (d) Scalability of different training frameworks
+          </h2>
+        </div>
+      </div>
+      <div class="columns is-centered">
         <div class="column is-four-fifths">
-
-
-  <table id="results-table" border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
-    <thead>
-      <tr>
-          <th rowspan="2" style="padding:5px;">Framework Type</th>
-          <th rowspan="2" style="padding:5px;">Framework Name</th>
-          <th colspan="2" style="padding:5px;">General</th>
-          <th colspan="2" style="padding:5px;">Web Shopping</th>
-      </tr>
-      <tr>
-          <th style="padding:5px;">Training</th>
-          <th style="padding:5px;">Test</th>
-          <th style="padding:5px;">Training</th>
-          <th style="padding:5px;">Test</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td rowspan="2" style="padding:5px; vertical-align: middle;">Prompting</td>
-          <td style="padding:5px;text-align: left">AppAgent + GPT-4v</td>
-          <td style="padding:5px;">41.4</td>
-          <td style="padding:5px;">43.0</td>
-          <td style="padding:5px;">31.2</td>
-          <td style="padding:5px;">35.2</td>
-      </tr>
-      <tr>
-          <td style="padding:5px;">AppAgent + Gemini</td>
-          <td style="padding:5px;">39.1</td>
-          <td style="padding:5px;">45.3</td>
-          <td style="padding:5px;">30.5</td>
-          <td style="padding:5px;">32.0</td>
-      </tr>
-      <tr>
-          <td rowspan="4" style="padding:5px;vertical-align: middle">Learning</td>
-          <td style="padding:5px; text-align: left">AutoUI</td>
-          <td style="padding:5px;">38.3</td>
-          <td style="padding:5px;">40.6</td>
-          <td style="padding:5px;">42.2</td>
-          <td style="padding:5px;">44.5</td>
-      </tr>
-      <tr>
-          <td style="padding:5px;">DigiRL (single, online)</td>
-          <td style="padding:5px;">64.6 ± 1.5</td>
-          <td style="padding:5px;">59.9 ± 2.1</td>
-          <td style="padding:5px;">63.3 ± 1.5</td>
-          <td style="padding:5px;">59.6 ± 3.1</td>
-      </tr>
-      <tr>
-          <td style="padding:5px;">DigiRL (multi)</td>
-          <td style="padding:5px;">67.7 ± 1.3</td>
-          <td style="padding:5px;">61.2 ± 2.4</td>
-          <td style="padding:5px;">64.5 ± 1.1</td>
-          <td style="padding:5px;">59.9 ± 2.8</td>
-      </tr>
-      <tr>
-          <td style="padding:5px; font-weight:bold; font-style:italic;">DistRL (Ours)</td>
-          <td style="padding:5px; font-weight:bold;">75.5 ± 0.2</td>
-          <td style="padding:5px; font-weight:bold;">73.2 ± 1.1</td>
-          <td style="padding:5px; font-weight:bold;">69.8 ± 0.5</td>
-          <td style="padding:5px; font-weight:bold;">68.5 ± 1.7</td>
-      </tr>
-  </tbody>
-</table>
-<h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
-  Main comparisons regarding the success rate of different agents across various settings. Each experiment is repeated three times and the mean and standard deviation are reported. Results are evaluated with our autonomous evaluator with the 128 user instructions in the train and test set.
-</h2>
-
-
-  <div class="content">
-    <h3 class="subtitle is-6" style="margin-top: 1rem;">For full results and more details, please refer to our <a href="https://arxiv.org/abs/2410.14803" target="_blank" style="color:#3273dc;">paper</a>.</h3>
-</div>
-</div>
-</div>
-</div>
+          <table id="results-table" border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
+              <thead>
+                <tr>
+                    <th rowspan="2" style="padding:5px;">Framework Type</th>
+                    <th rowspan="2" style="padding:5px;">Framework Name</th>
+                    <th colspan="2" style="padding:5px;">General</th>
+                    <th colspan="2" style="padding:5px;">Web Shopping</th>
+                </tr>
+                <tr>
+                    <th style="padding:5px;">Training</th>
+                    <th style="padding:5px;">Test</th>
+                    <th style="padding:5px;">Training</th>
+                    <th style="padding:5px;">Test</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2" style="padding:5px; vertical-align: middle;">Prompting</td>
+                    <td style="padding:5px;text-align: left">AppAgent + GPT-4v</td>
+                    <td style="padding:5px;">41.4</td>
+                    <td style="padding:5px;">43.0</td>
+                    <td style="padding:5px;">31.2</td>
+                    <td style="padding:5px;">35.2</td>
+                </tr>
+                <tr>
+                    <td style="padding:5px;">AppAgent + Gemini</td>
+                    <td style="padding:5px;">39.1</td>
+                    <td style="padding:5px;">45.3</td>
+                    <td style="padding:5px;">30.5</td>
+                    <td style="padding:5px;">32.0</td>
+                </tr>
+                <tr>
+                    <td rowspan="4" style="padding:5px;vertical-align: middle">Learning</td>
+                    <td style="padding:5px; text-align: left">AutoUI</td>
+                    <td style="padding:5px;">38.3</td>
+                    <td style="padding:5px;">40.6</td>
+                    <td style="padding:5px;">42.2</td>
+                    <td style="padding:5px;">44.5</td>
+                </tr>
+                <tr>
+                    <td style="padding:5px;">DigiRL (single, online)</td>
+                    <td style="padding:5px;">64.6 ± 1.5</td>
+                    <td style="padding:5px;">59.9 ± 2.1</td>
+                    <td style="padding:5px;">63.3 ± 1.5</td>
+                    <td style="padding:5px;">59.6 ± 3.1</td>
+                </tr>
+                <tr>
+                    <td style="padding:5px;">DigiRL (multi)</td>
+                    <td style="padding:5px;">67.7 ± 1.3</td>
+                    <td style="padding:5px;">61.2 ± 2.4</td>
+                    <td style="padding:5px;">64.5 ± 1.1</td>
+                    <td style="padding:5px;">59.9 ± 2.8</td>
+                </tr>
+                <tr>
+                    <td style="padding:5px; font-weight:bold; font-style:italic;">DistRL (Ours)</td>
+                    <td style="padding:5px; font-weight:bold;">75.5 ± 0.2</td>
+                    <td style="padding:5px; font-weight:bold;">73.2 ± 1.1</td>
+                    <td style="padding:5px; font-weight:bold;">69.8 ± 0.5</td>
+                    <td style="padding:5px; font-weight:bold;">68.5 ± 1.7</td>
+                </tr>
+            </tbody>
+          </table>
+          <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
+            Main comparisons regarding the success rate of different agents across various settings. Each experiment is repeated three times and the mean and standard deviation are reported. Results are evaluated with our autonomous evaluator with the 128 user instructions in the train and test set.
+          </h2>
+          <div class="content">
+            <h3 class="subtitle is-6" style="margin-top: 1rem;">For full results and more details, please refer to our <a href="https://arxiv.org/abs/2410.14803" target="_blank" style="color:#3273dc;">paper</a>.</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </section>
 <!--End Results -->
@@ -387,5 +416,27 @@
   }
   #results-table > tbody > tr > td:nth-child(n+2) {
     text-align: center;
+  }
+  /* Add these new mobile-responsive rules */
+  @media screen and (max-width: 768px) {
+    #results-table {
+      font-size: 0.75rem;  /* Reduce font size on mobile */
+    }
+    
+    #results-table > thead > tr > th,
+    #results-table > tbody > tr > td {
+      padding: 0.2rem;  /* Reduce padding on mobile */
+    }
+
+    /* Create horizontal scroll for table on mobile */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .column > .content > div > video {
+      width: 100%;
+    }
   }
 </style>
