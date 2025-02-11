@@ -200,7 +200,10 @@
             (a) maximizing subgoal-conditioned RL returns and 
             (b) minimizing subgoal-conditioned behavior differences from a reference policy, 
             ensuring both sample efficiency and performance guarantees.
-          </div>          
+
+          <br>
+          <br>
+    
           <img src="static/images/overview.png" width="100%">
         
           <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
@@ -209,15 +212,17 @@
             (c) minimizing the subgoal-conditioned difference.
           </h2>
 
-        </div> 
+          <br>
+          
+          <img src="static/images/example_subgoal_generator_vlm.png" width="100%">
         
-        <img src="static/images/example_subgoal_generator_vlm.png" width="100%">
-      
-        <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
-          The pipeline of VSC-RL. (a) VLM autonomously decomposes the goal \( g \) to the subgoals \( \{sg_i\}_{i=1}^N \). 
-          VSC-RL optimizes the objective of SGC-ELBO consisting of (b) maximizing the subgoal-conditioned return and 
-          (c) minimizing the subgoal-conditioned difference.
-        </h2>
+          <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
+            Autonomous vision-language subgoal generation in AitW task. The vision-language model autonomously decomposes the goal of the complicated mobile device control task into easily achievable subgoals.
+          </h2>
+
+          <br>
+
+          </div> 
         </div>
       </div>
     </div>
@@ -233,13 +238,19 @@
     <div class="container">
       <h2 class="title has-text-centered">Results</h2>
       <div class="columns is-centered">
-        <div class="column is-three-fifths">
-          <img src="static/images/results-aitw.png" width="100%">
-          <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
-            VSC-RL significantly outperforms all baselines in both the AitW General and Web Shopping tasks, achieving a final success rate of 0.75 in the General task and 0.6 in the Web Shopping task, surpassing DigiRL and other agents.
-          </h2>
+        <br>
+        <br>
+        <div class="columns is-centered" style="text-align: center;">
+          <div class="column is-12" style="text-align: center;">
+            <img src="static/images/results-aitw.png" style="width: 70%; height: auto; object-fit: cover; margin: 0 auto;">
+            <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem; text-align: center; width: 70%; margin: 0 auto;">
+              VSC-RL significantly outperforms all baselines in both the AitW General and Web Shopping tasks, achieving a final success rate of 0.75 in the General task and 0.6 in the Web Shopping task, surpassing DigiRL and other agents.
+            </h2>
+          </div>
         </div>
-      </div>
+      </div>      
+      <br>
+      <br>
       <div class="columns is-centered">
         <div class="column is-four-fifths">
           <table id="results-table" border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
@@ -260,7 +271,7 @@
             <tbody>
                 <tr>
                     <td rowspan="2" style="padding:5px; vertical-align: middle;">General</td>
-                    <td style="padding:5px;text-align: left">Train</td>
+                    <td style="padding:5px;text-align: middle">Train</td>
                     <td style="padding:5px;">32.3%</td>
                     <td style="padding:5px;">14.6%</td>
                     <td style="padding:5px;">25.0%</td>
@@ -270,7 +281,7 @@
                     <td style="padding:5px;"><b>73.9%</b></td>
                 </tr>
                 <tr>
-                  <td style="padding:5px;text-align: left">Test</td>
+                  <td style="padding:5px;text-align: middle">Test</td>
                   <td style="padding:5px;">16.7%</td>
                   <td style="padding:5px;">16.7%</td>
                   <td style="padding:5px;">25.0%</td>
@@ -281,7 +292,7 @@
                 </tr>
                 <tr>
                     <td rowspan="4" style="padding:5px;vertical-align: middle">Web Shopping</td>
-                    <td style="padding:5px;text-align: left">Train</td>
+                    <td style="padding:5px;text-align: middle">Train</td>
                     <td style="padding:5px;">6.3%</td>
                     <td style="padding:5px;">5.2%</td>
                     <td style="padding:5px;">31.3%</td>
@@ -291,7 +302,7 @@
                     <td style="padding:5px;"><b>64.0%</b></td>
                 </tr>
                 <tr>
-                  <td style="padding:5px;text-align: left">Test</td>
+                  <td style="padding:5px;text-align: middle">Test</td>
                   <td style="padding:5px;">11.5%</td>
                   <td style="padding:5px;">8.3%</td>
                   <td style="padding:5px;">38.5%</td>
@@ -305,8 +316,11 @@
           <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
             The evaluated performance on the train and test datasets of the General and Web Shopping tasks. The best performance is in bold.
           </h2>
+
+          <br>
+
           <div class="content">
-            <h3 class="subtitle is-6" style="margin-top: 1rem;">For full results and more details, please refer to our <a href="https://arxiv.org/abs/2410.14803" target="_blank" style="color:#3273dc;">paper</a>.</h3>
+            <h3 class="subtitle is-6" style="margin-top: 1rem;">For full results and more details, please refer to our <a href="https://arxiv_link" target="_blank" style="color:#3273dc;">paper</a>.</h3>
           </div>
         </div>
       </div>
@@ -354,40 +368,58 @@
   </html>
 
 <style>
-  #results-table{
-    background-color: #FFFFFF;
+  #results-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 2px solid black; /* 加粗顶部横线 */
+    border-bottom: 2px solid black; /* 加粗底部横线 */
   }
-  #results-table > thead > tr > th {
-    padding: 0.5rem;
+  
+  /* 去掉最左和最右列的竖线 */
+  #results-table th, 
+  #results-table td {
+    padding: 5px;
     text-align: center;
-    vertical-align: middle;
+    border-left: none;
+    border-right: none;
   }
+  
+  #results-table > thead > tr > th,
   #results-table > tbody > tr > td {
     padding: 0.5rem;
+    border: none; /* 确保没有竖线 */
   }
-  #results-table > tbody > tr > td:nth-child(n+2) {
-    text-align: center;
+  
+  /* 第一行顶部加粗横线 */
+  #results-table tbody tr:first-child td {
+    border-top: 1px solid black;
   }
-  /* Add these new mobile-responsive rules */
+  
+  /* 在第三行加横线 */
+  #results-table tbody tr:nth-child(3) td {
+    border-top: 1px solid black; /* 第三行顶部加横线 */
+  }
+  
+  /* 在移动端添加横向滚动条 */
   @media screen and (max-width: 768px) {
     #results-table {
-      font-size: 0.75rem;  /* Reduce font size on mobile */
+      font-size: 0.75rem; /* 减小字体大小 */
     }
-    
+  
     #results-table > thead > tr > th,
     #results-table > tbody > tr > td {
-      padding: 0.2rem;  /* Reduce padding on mobile */
+      padding: 0.2rem; /* 减小内边距 */
     }
-
-    /* Create horizontal scroll for table on mobile */
+  
+    /* 创建横向滚动条 */
     .table-container {
       width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
-
+  
     .column > .content > div > video {
       width: 100%;
     }
-  }
+  }  
 </style>
