@@ -23,8 +23,18 @@
   <meta name="keywords" content="vision-language agent, vision-language model, reinforcement learning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MathJax Example</title>
+  <script type="text/javascript" async
+      src="https://polyfill.io/v3/polyfill.min.js?features=es6">
+  </script>
+  <script type="text/javascript" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
 
-  <title>DISTRL: AN ASYNCHRONOUS DISTRIBUTED REINFORCEMENT LEARNING FRAMEWORK FOR ON-DEVICE CONTROL AGENTS</title>
+
+  <title>VSC-RL: ADVANCING AUTONOMOUS VISION-LANGUAGE AGENTS WITH VARIATIONAL SUBGOAL-CONDITIONED REINFORCEMENT LEARNING</title>
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
 
@@ -51,40 +61,37 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title" style="font-size: 2.4rem;">DISTRL: <br/>AN ASYNCHRONOUS DISTRIBUTED <br/>REINFORCEMENT LEARNING FRAMEWORK <br/>FOR ON-DEVICE CONTROL AGENTS</h1>
+            <h1 class="title is-1 publication-title" style="font-size: 2.4rem;">VSC-RL: <br/>ADVANCING AUTONOMOUS VISION-LANGUAGE AGENTS WITH VARIATIONAL SUBGOAL-CONDITIONED REINFORCEMENT LEARNING</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                Taiyi Wang<sup>1 2 * †</sup>,
+                Qingyuan Wu<sup>1 * †</sup>,
               </span>
               <span class="author-block">
-                Zhihao Wu<sup>3 *</sup>,
+                Jianheng Liu<sup>2 *</sup>,
               </span>
               <span class="author-block">
-                Jianheng Liu<sup>4</sup>,
+                Jianye Hao<sup>2</sup>,
               </span>
               <span class="author-block">
-                Jianye Hao<sup>3</sup>,
+                Jun Wang<sup>3</sup>,
               </span>
               <span class="author-block">
-                Jun Wang<sup>4</sup>,
-              </span>
-              <span class="author-block">
-                Kun Shao<sup>3 †</sup>
+                Kun Shao<sup>2 †</sup>,
               </span>
               </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block"><sup>1</sup> University of Cambridge<br><sup>2</sup> Powersense Technology Limited<br><sup>3</sup> Huawei Noah's Ark Lab</span><br><sup>4</sup> University College London</span>
+                    <span class="author-block"><sup>1</sup> University of Liverpool<br><sup>2</sup> Huawei Noah's Ark Lab<br><sup>3</sup> University College London</span>
                     <span class="eql-cntrb"><small><br><sup>* </sup>Equal Contribution</small></span>
-                    <span class="eql-cntrb"><small><br><sup>† </sup>Corresponding authors: Taiyi.Wang@cl.cam.ac.uk, shaokun2@huawei.com</small></span>
+                    <span class="eql-cntrb"><small><br><sup>† </sup>Corresponding authors: qingwu2@liverpool.ac.uk, shaokun2@huawei.com</small></span>
                   </div>
 
                   <div class="column has-text-centered">
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                       <span class="link-block">
-                        <a href="https://ai-agents-2030.github.io/DistRL/static/documents/DistRL_arxiv.pdf" target="_blank"
+                        <a href="https://paper_link" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -106,7 +113,7 @@
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/DistRL-lab/distrl-open" target="_blank"
+                    <a href="https://code_link" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -117,7 +124,7 @@
 
                 <!-- ArXiv abstract Link -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/2410.14803" target="_blank"
+                  <a href="https://arxiv_link" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="ai ai-arxiv"></i>
@@ -141,19 +148,9 @@
       <div class="columns is-centered">
         <div class="column is-four-fifths">
           <div class="content">
-              <h3 class="subtitle is-5">Comparison between DistRL Agent and DigiRL Agent on Real Web Browsing Task:</h3>
+              <h3 class="subtitle is-5">Qualitative example of VSC-RL on the Web Shopping task: </h3>
               <div style="text-align: center">
-                <video poster="" id="tree" autoplay controls muted loop height="100%" width="75%">
-                  <!-- Your video here -->
-                  <source src="static/videos/compare_demo_v4.mp4" type="video/mp4">
-                </video>
-              </div>
-              <h3 class="subtitle is-5">Host-worker Running Loop Illustrations for DistRL Asynchronous Framework:</h3>
-              <div style="text-align: center">
-                <video poster="" id="tree" autoplay controls muted loop height="100%" width="75%" style="margin-top: 1rem">
-                  <!-- Your video here -->
-                  <source src="static/videos/async_demo_v5_compressed.mp4" type="video/mp4">
-                </video>
+                <img src="static/images/example_aitw.png" width="100%">
               </div>
           </div>
         </div>
@@ -171,7 +168,8 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            On-device control agents, especially on mobile devices, are responsible for operating mobile devices to fulfill users' requests, enabling seamless and intuitive interactions. Integrating Multimodal Large Language Models (MLLMs) into these agents enhances their ability to understand and execute complex commands, thereby improving user experience. However, fine-tuning MLLMs for on-device control presents significant challenges due to limited data availability and inefficient online training processes. This paper introduces DistRL, a novel framework designed to enhance the efficiency of online RL fine-tuning for mobile device control agents. DistRL employs centralized training and decentralized data acquisition to ensure efficient fine-tuning in the context of dynamic online interactions. Additionally, the framework is backed by our tailor-made RL algorithm, which effectively balances exploration with the prioritized utilization of collected data to ensure stable and robust training. Our experiments show that, on average, DistRL delivers a 3X improvement in training efficiency and enables training data collection 2.4X faster than the leading synchronous multi-machine methods. Notably, after training, DistRL achieves a 20% relative improvement in success rate compared to state-of-the-art methods on general Android tasks from an open benchmark, significantly outperforming existing approaches while maintaining the same training time. These results validate DistRL as a scalable and efficient solution, offering substantial improvements in both training efficiency and agent performance for real-world, in-the-wild device control tasks.
+            State-of-the-art (SOTA) reinforcement learning (RL) methods enable the vision-language agents to learn from interactions with the environment without human supervision.
+            However, they struggle with learning inefficiencies in tackling real-world complex sequential decision-making tasks, especially with sparse reward signals and long-horizon dependencies. To effectively address the issue, we introduce Variational Subgoal-Conditioned RL (VSC-RL), which reformulates the vision-language sequential decision-making task as a variational goal-conditioned RL problem, allowing us to leverage advanced optimization methods to enhance learning efficiency. Specifically, VSC-RL optimizes the SubGoal Evidence Lower BOund (SGC-ELBO), which consists of (a) maximizing the subgoal-conditioned return via RL and (b) minimizing the subgoal-conditioned difference with the reference policy. We theoretically demonstrate that SGC-ELBO is equivalent to the original optimization objective, ensuring improved learning efficiency without sacrificing performance guarantees. Additionally, for real-world complex decision-making tasks, VSC-RL leverages the vision-language model to autonomously decompose the goal into feasible subgoals, enabling efficient learning. Across various benchmarks, including challenging real-world mobile device control tasks, VSC-RL significantly outperforms the SOTA vision-language agents, achieving superior performance and remarkable improvement in learning efficiency.
           </p>
         </div>
       </div>
@@ -179,95 +177,55 @@
   </div>
 </section>
 <!-- End paper abstract -->
+
  
-<!-- System Design -->
+<!-- Our Approach -->
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title has-text-centered">System Design</h2>
+      <h2 class="title has-text-centered">Our Approach: VSC-RL</h2>
       <div class="columns is-centered">
         <div class="column is-four-fifths">
           <div class="content">            
-            <b>DistRL</b> is an asynchronous distributed reinforcement learning framework that decouples trajectory collection from policy learning. The framework consists of a central <b>Host Learner</b> equipped with GPUs for policy training, and multiple heterogeneous <b>Workers</b> running Android emulators or connected to mobile devices. This separation optimizes efficiency by aligning tasks with appropriate hardware - <b>CPU-intensive</b> environment interactions on worker machines and <b>GPU-accelerated</b> policy training on the host server. The host maintains a <b>Circular Replay Buffer</b> for storing trajectories and uses a <b>FIFO Queue</b> to manage incoming experiences from workers efficiently.
+            We propose <b>VSC-RL (Variational Subgoal-Conditioned Reinforcement Learning)</b>, 
+            a novel reinforcement learning framework that enhances <b>vision-language agents</b> 
+            by improving learning efficiency in complex sequential decision-making tasks. 
+            We formulate the problem as a <b>variational goal-conditioned RL</b> problem 
+            and introduce the <b>SubGoal-Conditioned Evidence Lower Bound (SGC-ELBO)</b> 
+            as the optimization objective. 
+            Our approach leverages Vision-Language Models (VLMs) to autonomously decompose 
+            high-level goals into feasible subgoals, addressing challenges in 
+            long-horizon tasks with sparse rewards. 
+            We then optimize the agent’s policy by 
+            (a) maximizing subgoal-conditioned RL returns and 
+            (b) minimizing subgoal-conditioned behavior differences from a reference policy, 
+            ensuring both sample efficiency and performance guarantees.
           </div>          
-          <img src="static/images/system-design.PNG" width="100%">
+          <img src="static/images/overview.png" width="100%">
         
           <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
-            The workers operate in parallel through multi-threading, with each thread executing the latest policy received from the <b>Host Learner</b>. Workers collect trajectories during environment interactions and asynchronously send them back to the host for training. The framework demonstrates excellent scalability - with <b>two 96 vCPU machines</b> supporting up to <b>32 concurrent emulators</b> and nearly linear scaling with worker performance.
+            The pipeline of VSC-RL. (a) VLM autonomously decomposes the goal \( g \) to the subgoals \( \{sg_i\}_{i=1}^N \). 
+            VSC-RL optimizes the objective of SGC-ELBO consisting of (b) maximizing the subgoal-conditioned return and 
+            (c) minimizing the subgoal-conditioned difference.
           </h2>
+
+        </div> 
+        
+        <img src="static/images/example_subgoal_generator_vlm.png" width="100%">
+      
+        <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
+          The pipeline of VSC-RL. (a) VLM autonomously decomposes the goal \( g \) to the subgoals \( \{sg_i\}_{i=1}^N \). 
+          VSC-RL optimizes the objective of SGC-ELBO consisting of (b) maximizing the subgoal-conditioned return and 
+          (c) minimizing the subgoal-conditioned difference.
+        </h2>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End System Design -->
+<!-- End Our Approach -->
  
-<!-- A-RIDE -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title has-text-centered">A-RIDE: The Backbone of DistRL</h2>
-      <div class="columns is-centered">
-        <div class="column is-four-fifths">
-          <div class="content">
-            <p style="text-align: justify;">Our method employs advantage-based estimations to refine policy gradient updates, as an extension of Generalized Advantage Estimation (GAE) by Schulman et al. (2015), to better suit asynchronous, distributed environments common in device control tasks.</p>
 
-            <h4>Advantage Computation</h4>
-
-            <p style="text-align: justify;">With the trajectory-level rewards and state value estimates obtained, we compute the advantage function A(s<sub>t</sub>, a<sub>t</sub>) using one-step estimation:</p>
-            
-            <p style="text-align :center; font-size: 1.25rem; font-family: math">A(s<sub>t</sub>, a<sub>t</sub>) = Q(s<sub>t</sub>,a<sub>t</sub>) - V(s<sub>t</sub>) = r(s<sub>t</sub>, a<sub>t</sub>) + γV(s<sub>t+1</sub>) - V(s<sub>t</sub>)</span></p>
-            
-            <p>which correctly represents the advantage function as per the policy gradient theorem. Here, r(s<sub>t</sub>, a<sub>t</sub>) includes signals of immediate rewards. The advantage and value functions are further modified by off-policy corrections.</p>
-            
-            <h4>Policy Optimization with Robust Regularization</h4>
-            
-            <p>Finally, the policy network optimizes the following loss:</p>
-            
-            <p style="text-align :center; font-size: 1.25rem; font-family: math">ℒ = −𝔼<sub>μ</sub>[ρ<sub>t</sub> A(s<sub>t</sub>, a<sub>t</sub>) log π(a<sub>t</sub>|s<sub>t</sub>)] − β 𝔼<sub>μ</sub>[ℍ(π(a<sub>t</sub>|s<sub>t</sub>))] + λ 𝔼<sub>μ</sub>[𝒫<sub>invalid</sub>(a<sub>t</sub>)],</p>
-                        
-            <p style="text-align: justify;">where <span style="font-family: math">ρ<sub>t</sub> = π(a<sub>t</sub>|s<sub>t</sub>)/μ(a<sub>t</sub>|s<sub>t</sub>)</span> is the importance sampling ratio between the target policy π and the behavior policy μ, ℍ is the entropy term for prevention of overfitting, 𝒫<sub>invalid</sub>(a<sub>t</sub>) imposes a penalty on actions deemed invalid based on task-specific criteria, β controls the strength of entropy regularization, and λ modulates the penalty's influence. The penalty is assigned using validation through pre-trained LLMs like Gemini, ensuring that inappropriate actions are penalized. This formulation encourages the agent to explore a diverse set of actions while constraining it to generate valid and meaningful commands, thereby enhancing both exploration and policy robustness when dealing with online non-stationarities.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End A-RIDE -->
-
-
-<!-- DistRL Pipeline -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-centered">         
-        <div class="column is-four-fifths">
-          <img src="static/images/backbone.PNG" width="100%">
-          <div class="content">
-
-            <h4>Off-policy correction: Retrace</h4>
-
-            <p style="text-align: justify;">To enhance the estimation of the state-value function V(s<sub>t</sub>) in off-policy and asynchronous settings, we apply Retrace(λ) corrections directly to V(s<sub>t</sub>). The Retrace algorithm extends the <strong>TD</strong>(λ) method to off-policy learning by incorporating importance sampling ratios and a trace decay parameter λ. Specifically, we update V(s<sub>t</sub>) using the correction term δ<sub>t</sub>, computed as:</p>
-
-            <p style="text-align: center; font-size: 1.25rem; font-family: math">V(s<sub>t</sub>) ← V(s<sub>t</sub>) + δ<sub>t</sub></p>
-
-            <p style="text-align: center; font-size: 1.25rem; font-family: math">δ<sub>t</sub> = Σ<sub>k=t</sub><sup>H</sup> γ<sup>k-t</sup> (∏<sub>i=t+1</sub><sup>k</sup> c<sub>i</sub>) [r<sub>k</sub> + γV(s<sub>k+1</sub>) - V(s<sub>k</sub>)]</p>
-
-            <p style="text-align: justify;">where c<sub>i</sub> = λ min(1, ρ<sub>i</sub>) with λ ∈ [0,1] being the trace decay parameter, and ρ<sub>i</sub> is the importance sampling ratio as mentioned before. This correction term effectively adjusts the value estimates using future rewards and importance sampling, enabling off-policy learning while mitigating variance due to importance weights. By applying Retrace(λ), we improve the estimation of V(s<sub>t</sub>) in off-policy settings, enhancing the stability and convergence of the value network.</p>
-
-            <h4>Distributed Prioritized Experience Replay (DPER)</h4>
-
-            <p style="text-align: justify;">To improve sample efficiency, we employ <strong>Distributed Prioritized Experience Replay (DPER)</strong>. For each trajectory τ = {(s<sub>t</sub>, a<sub>t</sub>, r<sub>t</sub>, s<sub>t+1</sub>)}<sub>t=0</sub><sup>H</sup>, we compute the priority p(τ) as:</p>
-
-            <p style="text-align: center; font-size: 1.25rem; font-family: math">p(τ) = w<sub>1</sub>|δ̄| + w<sub>2</sub>ρ̄ + w<sub>3</sub>ℍ̄</p>
-
-            <p style="text-align: justify;">where |δ̄| is the average absolute temporal-difference (TD) error over the trajectory, calculated as δ<sub>t</sub> = r<sub>t</sub> + γV(s<sub>t+1</sub>) - V(s<sub>t</sub>); ρ̄ is the average importance sampling ratio ρ<sub>t</sub>; and ℍ̄ is the average policy entropy, ℍ<sub>t</sub> = -log π(a<sub>t</sub>|s<sub>t</sub>), encouraging exploration by encouraging policy uncertainty, thus avoiding early convergence to suboptimal policies during training in dynamic environments. The weights w<sub>1</sub>, w<sub>2</sub>, and w<sub>3</sub> balance the contributions of each component, which is selected by grid-search (See Appendix: Hyperparameters). Trajectories with higher priorities are replayed more frequently, focusing learning on the most informative experiences. Priorities are periodically updated based on the latest policy, recalculating them to focus learning on the most informative experiences, ensuring continual adaptation to evolving behavior policies.</p>
-          </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End DistRL Pipeline -->
- 
 
 <!-- Results -->
 <section class="hero is-small is-light">
@@ -276,9 +234,9 @@
       <h2 class="title has-text-centered">Results</h2>
       <div class="columns is-centered">
         <div class="column is-three-fifths">
-          <img src="static/images/results-plot.PNG" width="100%">
+          <img src="static/images/results-aitw.PNG" width="100%">
           <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
-            Training performance (32 emulators) between the current SoTA (DigiRL) and DistRL, highlighting the enhanced efficiency of DistRL’s distributed framework during online training. (a) Wall-clock time comparison; (b) Training efficiency comparison; (c) Accumulated trajectories collection ability comparison; (d) Scalability of different training frameworks
+            VSC-RL significantly outperforms all baselines in both the AitW General and Web Shopping tasks, achieving a final success rate of 0.75 in the General task and 0.6 in the Web Shopping task, surpassing DigiRL and other agents.
           </h2>
         </div>
       </div>
@@ -287,67 +245,65 @@
           <table id="results-table" border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
               <thead>
                 <tr>
-                    <th rowspan="2" style="padding:5px;">Framework Type</th>
-                    <th rowspan="2" style="padding:5px;">Framework Name</th>
-                    <th colspan="2" style="padding:5px;">General</th>
-                    <th colspan="2" style="padding:5px;">Web Shopping</th>
+                    <th rowspan="2" style="padding:5px;">Task</th>
+                    <th rowspan="2" style="padding:5px;">Task Split</th>
+                    <th colspan="1" style="padding:5px;">Set-of-Marks</th>
+                    <th colspan="1" style="padding:5px;">AppAgent</th>
+                    <th colspan="1" style="padding:5px;">CogAgent</th>
+                    <th colspan="1" style="padding:5px;">AutoUI</th>
+                    <th colspan="1" style="padding:5px;">Filtered BC</th>
+                    <th colspan="1" style="padding:5px;">DigiRL</th>
+                    <th colspan="1" style="padding:5px;">VSC-RL (ours)</th>
                 </tr>
-                <tr>
-                    <th style="padding:5px;">Training</th>
-                    <th style="padding:5px;">Test</th>
-                    <th style="padding:5px;">Training</th>
-                    <th style="padding:5px;">Test</th>
-                </tr>
+ 
             </thead>
             <tbody>
                 <tr>
-                    <td rowspan="2" style="padding:5px; vertical-align: middle;">Prompting</td>
-                    <td style="padding:5px;text-align: left">AppAgent + GPT-4v</td>
-                    <td style="padding:5px;">41.4</td>
-                    <td style="padding:5px;">43.0</td>
-                    <td style="padding:5px;">31.2</td>
-                    <td style="padding:5px;">35.2</td>
+                    <td rowspan="2" style="padding:5px; vertical-align: middle;">General</td>
+                    <td style="padding:5px;text-align: left">Train</td>
+                    <td style="padding:5px;">32.3%</td>
+                    <td style="padding:5px;">14.6%</td>
+                    <td style="padding:5px;">25.0%</td>
+                    <td style="padding:5px;">12.5%</td>
+                    <td style="padding:5px;">53.9%</td>
+                    <td style="padding:5px;">64.9%</td>
+                    <td style="padding:5px;"><b>73.9%</b></td>
                 </tr>
                 <tr>
-                    <td style="padding:5px;">AppAgent + Gemini</td>
-                    <td style="padding:5px;">39.1</td>
-                    <td style="padding:5px;">45.3</td>
-                    <td style="padding:5px;">30.5</td>
-                    <td style="padding:5px;">32.0</td>
+                  <td style="padding:5px;text-align: left">Test</td>
+                  <td style="padding:5px;">16.7%</td>
+                  <td style="padding:5px;">16.7%</td>
+                  <td style="padding:5px;">25.0%</td>
+                  <td style="padding:5px;">14.6%</td>
+                  <td style="padding:5px;">62.5%</td>
+                  <td style="padding:5px;">67.7%</td>
+                  <td style="padding:5px;"><b>72.9%</b></td>
                 </tr>
                 <tr>
-                    <td rowspan="4" style="padding:5px;vertical-align: middle">Learning</td>
-                    <td style="padding:5px; text-align: left">AutoUI</td>
-                    <td style="padding:5px;">38.3</td>
-                    <td style="padding:5px;">40.6</td>
-                    <td style="padding:5px;">42.2</td>
-                    <td style="padding:5px;">44.5</td>
+                    <td rowspan="4" style="padding:5px;vertical-align: middle">Web Shopping</td>
+                    <td style="padding:5px;text-align: left">Train</td>
+                    <td style="padding:5px;">6.3%</td>
+                    <td style="padding:5px;">5.2%</td>
+                    <td style="padding:5px;">31.3%</td>
+                    <td style="padding:5px;">14.6%</td>
+                    <td style="padding:5px;">53.6%</td>
+                    <td style="padding:5px;">55.3%</td>
+                    <td style="padding:5px;"><b>64.0%</b></td>
                 </tr>
                 <tr>
-                    <td style="padding:5px;">DigiRL (single, online)</td>
-                    <td style="padding:5px;">64.6 ± 1.5</td>
-                    <td style="padding:5px;">59.9 ± 2.1</td>
-                    <td style="padding:5px;">63.3 ± 1.5</td>
-                    <td style="padding:5px;">59.6 ± 3.1</td>
-                </tr>
-                <tr>
-                    <td style="padding:5px;">DigiRL (multi)</td>
-                    <td style="padding:5px;">67.7 ± 1.3</td>
-                    <td style="padding:5px;">61.2 ± 2.4</td>
-                    <td style="padding:5px;">64.5 ± 1.1</td>
-                    <td style="padding:5px;">59.9 ± 2.8</td>
-                </tr>
-                <tr>
-                    <td style="padding:5px; font-weight:bold; font-style:italic;">DistRL (Ours)</td>
-                    <td style="padding:5px; font-weight:bold;">75.5 ± 0.2</td>
-                    <td style="padding:5px; font-weight:bold;">73.2 ± 1.1</td>
-                    <td style="padding:5px; font-weight:bold;">69.8 ± 0.5</td>
-                    <td style="padding:5px; font-weight:bold;">68.5 ± 1.7</td>
+                  <td style="padding:5px;text-align: left">Test</td>
+                  <td style="padding:5px;">11.5%</td>
+                  <td style="padding:5px;">8.3%</td>
+                  <td style="padding:5px;">38.5%</td>
+                  <td style="padding:5px;">17.7%</td>
+                  <td style="padding:5px;">54.2%</td>
+                  <td style="padding:5px;">41.3%</td>
+                  <td style="padding:5px;"><b>59.0%</b></td>
                 </tr>
             </tbody>
           </table>
           <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
-            Main comparisons regarding the success rate of different agents across various settings. Each experiment is repeated three times and the mean and standard deviation are reported. Results are evaluated with our autonomous evaluator with the 128 user instructions in the train and test set.
+            The evaluated performance on the train and test datasets of the General and Web Shopping tasks. The best performance is in bold.
           </h2>
           <div class="content">
             <h3 class="subtitle is-6" style="margin-top: 1rem;">For full results and more details, please refer to our <a href="https://arxiv.org/abs/2410.14803" target="_blank" style="color:#3273dc;">paper</a>.</h3>
@@ -365,12 +321,7 @@
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>
-@article{wang2024distrl,
-  title={DistRL: An Asynchronous Distributed Reinforcement Learning Framework for On-Device Control Agents},
-  author={Wang, Taiyi and Wu, Zhihao and Liu, Jianheng and Hao, Jianye and Wang, Jun and Shao, Kun},
-  journal={arXiv preprint arXiv:2410.14803},
-  year={2024}
-}
+@
       </code></pre>
     </div>
 </section>
