@@ -71,10 +71,10 @@
                 Jianheng Liu<sup>2 *</sup>,
               </span>
               <span class="author-block">
-                Jianye Hao<sup>2</sup>,
+                Jianye Hao<sup>2 3</sup>,
               </span>
               <span class="author-block">
-                Jun Wang<sup>3</sup>,
+                Jun Wang<sup>4</sup>,
               </span>
               <span class="author-block">
                 Kun Shao<sup>2 †</sup>,
@@ -82,7 +82,7 @@
               </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block"><sup>1</sup> University of Liverpool<br><sup>2</sup> Huawei Noah's Ark Lab<br><sup>3</sup> University College London</span>
+                    <span class="author-block"><sup>1</sup> University of Liverpool<br><sup>2</sup> Huawei Noah's Ark Lab<br><sup>3</sup> Tianjin University<br>4</sup> University College London</span>
                     <span class="eql-cntrb"><small><br><sup>* </sup>Equal Contribution</small></span>
                     <span class="eql-cntrb"><small><br><sup>† </sup>Corresponding authors: qingwu2@liverpool.ac.uk, shaokun2@huawei.com</small></span>
                   </div>
@@ -186,7 +186,7 @@
       <h2 class="title has-text-centered">Our Approach: VSC-RL</h2>
       <div class="columns is-centered">
         <div class="column is-four-fifths">
-          <div class="content">            
+          <div class="content">         
             We propose <b>VSC-RL (Variational Subgoal-Conditioned Reinforcement Learning)</b>, 
             a novel reinforcement learning framework that enhances <b>vision-language agents</b> 
             by improving learning efficiency in complex sequential decision-making tasks. 
@@ -213,12 +213,28 @@
           </h2>
 
           <br>
+
+          <p style="text-align: justify;">
+            The <b>SGC-ELBO</b> is derived by decomposing the original goal-conditioned problem into smaller subgoal-conditioned tasks:</p>
+
+          <p style="text-align: center; font-size: 1.25rem; font-family: math">SGC-ELBO(π, π<sub>ref</sub>, sg<sub>i</sub>, g) = E<sub>τ<sub>i</sub> ~ p<sub>π</sub>(τ<sub>i</sub>|sg<sub>i</sub>)</sub> [log p(O|τ<sub>i</sub>, sg<sub>i</sub>)] - KL(p<sub>π</sub>(τ<sub>i</sub>|sg<sub>i</sub>) || p<sub>π<sub>ref</sub></sub>(τ<sub>i</sub>|g))</p>
+
+          <p style="text-align: justify;">
+            where the first term maximizes the likelihood of observing outcomes \(O\) given the subgoal \(sg_i\), and the second term minimizes the Kullback-Leibler divergence (KL-divergence) between the policy \( \pi \) and the reference policy \( \pi_{\text{ref}} \), ensuring that the learned policy aligns with the reference policy while effectively solving the subgoal.</p>
+
+          <br>
           
           <img src="static/images/example_subgoal_generator_vlm.png" width="100%">
         
           <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
             Autonomous vision-language subgoal generation in AitW task. The vision-language model autonomously decomposes the goal of the complicated mobile device control task into easily achievable subgoals.
           </h2>
+
+          <p style="text-align: justify;">We employ Vision-Language Models (VLMs) to autonomously generate subgoals. Given a high-level goal \(g\), the VLM generates a set of feasible subgoals \( \{ sg_i \}_{i=1}^N \) that break down the task into simpler, achievable steps. The optimization objective for VSC-RL, using a VLM as the subgoal generator, can be written as:</p>
+
+          <p style="text-align: center; font-size: 1.25rem; font-family: math">max<sub>&#8290;</sub> π &#8290; [&#8290; &sum;<sub>i=1</sub><sup>N</sup> &#8290; VLM(g) &#8290; [SGC-ELBO(π, π<sub>ref</sub>, sg<sub>i</sub>, g)]</sub>]</p>
+
+          <p style="text-align: justify;">In this optimization, we maximize the sum of <b>SGC-ELBO</b> values for all generated subgoals. This process ensures that the agent not only learns to perform tasks efficiently but also generalizes across various complex decision-making problems.</p>
 
           <br>
 
@@ -230,7 +246,6 @@
 </section>
 <!-- End Our Approach -->
  
-
 
 <!-- Results -->
 <section class="hero is-small is-light">
