@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<!--   <meta name="description" content="Given a video and a text prompt, Dreamix edits the video while maintaining fidelity to color, posture, object size and camera pose, resulting in a temporally consistent video."> -->
+  <meta property="og:title" content="ViMo: A Generative Visual GUI World Model for App Agent"/>
+<!--   <meta property="og:description" content="Given a video and a text prompt, Dreamix edits the video while maintaining fidelity to color, posture, object size and camera pose, resulting in a temporally consistent video."/> -->
+<!--   <meta property="og:url" content="https://dreamix-video-editing.github.io"/> -->
+<!--   <meta property="og:image" content="static/image/og_banner_image.png" /> -->
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+<!--   <meta name="twitter:title" content="Dreamix: Video Diffusion Models are General Video Editors"> -->
+<!--   <meta name="twitter:description" content="Given a video and a text prompt, Dreamix edits the video while maintaining fidelity to color, posture, object size and camera pose, resulting in a temporally consistent video."> -->
+<!--   <meta name="twitter:image" content="static/images/twitter_banner_image.png"> -->
+<!--   <meta name="twitter:card" content="summary_large_image"> -->
+<!--   <meta name="keywords" content="Video diffusion models, video editing, dreamix, dreambooth, imagen-video"> -->
+<!--   <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+
+
+  <title>ViMo: A Generative Visual GUI World Model for App Agent</title>
+<!--   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico"> -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">ViMo: A Generative Visual GUI World Model for App Agent</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+             <span class="author-block">
+                Dezhao Luo<sup>*,1</sup>,
+              </span>
+              <span class="author-block">
+                Bohan Tang<sup>*,2</sup>,
+              </span>
+              <span class="author-block">
+                Kang Li<sup>2</sup>,
+              </span>
+              <span class="author-block">
+                Georgios Papoudakis<sup>3</sup>,
+              </span>
+               <span class="author-block">
+                Jifei Song<sup>3</sup>,
+              </span>
+              <span class="author-block">
+                Shaogang Gong<sup>1</sup>,
+              </span>
+              <span class="author-block">
+                Jianye Hao<sup>3</sup>,
+              </span>
+              <span class="author-block">
+                Jun Wang<sup>4</sup>,
+              </span>
+               <span class="author-block">
+                Kun Shao<sup>†,3</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Queen Mary University of London</span>
+              <span class="author-block"><sup>2</sup>Oxford University</span>
+              <span class="author-block"><sup>3</sup>Huawei Noah's Ark Lab</span>
+              <span class="author-block"><sup>4</sup>University College London</span>
+              <span class="eql-cntrb"><small><br><sup>*</sup> Equal Contribution</small></span>
+              <span class="eql-cntrb"><small><br><sup>† </sup>Corresponding authors: shaokun2@huawei.com</small></span>
+
+              <span class="eql-cntrb"><small></small></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv PDF link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper to be added</span>
+                  </a>
+                </span>
+
+
+
+            <!-- ArXiv abstract Link -->
+            <span class="link-block">
+              <a href="https://arxiv.org/abs/2302.029..." target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="ai ai-arxiv"></i>
+                </span>
+                <span>arXiv to be added </span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+
+
+
+
+
+<!-- Subject Driven Video Generation carousel -->
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="single-image" style="text-align: center;">
+                <img src="static/images/intro.png" alt="Example Image" height="100%">
+
+        <h2 class="subtitle has-text-centered">
+ViMo is able to generate next GUIs based on
+the current GUI observation and a user action        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Subject Driven Video Generation carousel -->
+
+
+
+
+
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+App agents, which autonomously operate mobile Apps through Graphical User Interfaces (GUIs), have gained significant interest in real-world applications. Yet, they often struggle with long-horizon planning, failing to find the optimal actions for complex tasks with longer steps. To address this, world models are used to predict 
+the next GUI observation based on user actions, enabling more effective agent planning. However, existing world models primarily focus on generating only textual descriptions, lacking essential visual details.
+To fill this gap, we propose ViMo, the first visual world model designed to generate future App observations as images. For the challenge of generating text
+For the challenge of generating text in image patches, where even minor pixel errors can distort readability, we decompose GUI generation into graphic and text content generation. We propose a novel data representation, the Symbolic Text  Representation (STR) to overlay text content with symbolic placeholders while preserving graphics. With this design, 
+ViMo employs a STR Predictor to predict future GUIs' graphics and a GUI-text Predictor for generating the corresponding text. 
+Moreover, we deploy ViMo 
+to enhance agent-focused tasks by predicting the outcome of different action options.
+Experiments show ViMo's ability to generate visually plausible and functionally effective GUIs that enable App agents to make more informed decisions. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+
+<section class="section hero is-small is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Method Overview</h2>
+          <center>
+          <img src="static/images/method.png" alt=" " class="center-image blend-img-background" />
+          </center>
+          <div class="level-set has-text-justified">
+            <p>
+Framework of our ViMo. We first detect text content (actual words) in the current GUI and overlay it with text symbols (rectangle-shaped placeholders with a black border and white fill),  to create STR. Then the STR and the user action are input to the STR predictor to generate the STR of the next GUI. Next, text symbols within STR are located and assigned unique ID token. Then the LLM predicts the text content corresponding to each token. Finally, the next GUI image is constructed by overlaying the predicted text into the STR.            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section hero is-small is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Qualitative Comparisons</h2>
+          <center>
+          <img src="static/images/vis.png" alt=" " class="center-image blend-img-background"/>
+          </center>
+          <div class="level-set has-text-centered">
+            <p>
+ GUI generation comparison in graphic generation (Top) and text generation (Bottom, cropped for space efficiency)          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-small is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Quantitative Comparisons</h2>
+          <center>
+          <img src="static/images/exp.png" alt=" " class="center-image blend-img-background"/>
+          </center>
+          <div class="level-set has-text-centered">
+            <p>
+Decision optimisation comparisons on APP agent performance. Apps are categorised into “Leisure”, “Work”, and “System”.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-small is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Visualisations</h2>
+          <center>
+          <img src="static/images/morevis.png" alt=" " class="center-image blend-img-background"/>
+          </center>
+          <div class="level-set has-text-justified">
+            <p>
+Visualisation of ViMo in generating the next GUI. For each example, the action is displayed at the top, with the current GUI
+shown on the left and the generated GUI on the right.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!--BibTex citation -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>to be added
+</code></pre>
+  </div>
+</section>
+<!-- End BibTex citation -->
+
+
+<!--End Acknowledgements -->
+  
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+
+<!-- Default Statcounter code for Dreamix
+https://dreamix-video-editing.github.io -->
+<script type="text/javascript">
+var sc_project=12843789; 
+var sc_invisible=1; 
+var sc_security="e9c3bf5f"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="https://c.statcounter.com/12843789/0/e9c3bf5f/1/"
+alt="Web Analytics"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+
+<!-- End of Statcounter Code -->
+
+</body>
+</html>
