@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="VSC-RL: Advancing Autonomous Vision-Language Agents with Variational Subgoal-Conditioned Reinforcement Learning">
-  <meta property="og:title" content="VSC-RL: Advancing Autonomous Vision-Language Agents with Variational Subgoal-Conditioned Reinforcement Learning"/>
-  <meta property="og:description" content="VSC-RL: Advancing Autonomous Vision-Language Agents with Variational Subgoal-Conditioned Reinforcement Learning"/>
+  <meta name="description" content="Advancing Autonomous VLM Agents via Variational Subgoal-Conditioned Reinforcement Learning">
+  <meta property="og:title" content="Advancing Autonomous VLM Agents via Variational Subgoal-Conditioned Reinforcement Learning"/>
+  <meta property="og:description" content="Advancing Autonomous VLM Agents via Variational Subgoal-Conditioned Reinforcement Learning"/>
   <meta property="og:url" content="https://ai-agents-2030.github.io/VSC-RL/"/>
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
   <!-- <meta property="og:image" content="static/image/your_banner_image.png" />
@@ -34,7 +34,7 @@
   </script>
 
 
-  <title>VSC-RL: ADVANCING AUTONOMOUS VISION-LANGUAGE AGENTS WITH VARIATIONAL SUBGOAL-CONDITIONED REINFORCEMENT LEARNING</title>
+  <title>ADVANCING AUTONOMOUS VLM AGENTS VIA VARIATIONAL SUBGOAL-CONDITIONED REINFORCEMENT LEARNING</title>
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
 
@@ -61,30 +61,30 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title" style="font-size: 2.4rem;">VSC-RL: <br/>ADVANCING AUTONOMOUS VISION-LANGUAGE AGENTS WITH VARIATIONAL SUBGOAL-CONDITIONED REINFORCEMENT LEARNING</h1>
+            <h1 class="title is-1 publication-title" style="font-size: 2.4rem;">VSC-RL:<br>ADVANCING AUTONOMOUS VLM AGENTS<br>VIA VARIATIONAL SUBGOAL-CONDITIONED REINFORCEMENT LEARNING</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                Qingyuan Wu<sup>1 * †</sup>,
+                Qingyuan Wu<sup>1 2 *</sup>,
               </span>
               <span class="author-block">
-                Jianheng Liu<sup>2 *</sup>,
+                Jianheng Liu<sup>3 *</sup>,
               </span>
               <span class="author-block">
-                Jianye Hao<sup>2 3</sup>,
+                Jianye Hao<sup>3 4</sup>,
               </span>
               <span class="author-block">
-                Jun Wang<sup>4</sup>,
+                Jun Wang<sup>5</sup>,
               </span>
               <span class="author-block">
-                Kun Shao<sup>2 †</sup>,
+                Kun Shao<sup>3 †</sup>
               </span>
               </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block"><sup>1</sup> University of Liverpool<br><sup>2</sup> Huawei Noah's Ark Lab<br><sup>3</sup> Tianjin University<br>4</sup> University College London</span>
+                    <span class="author-block"><sup>1</sup> University of Liverpool<br><sup>2</sup> University of Southampton<br><sup>3</sup> Huawei Noah's Ark Lab<br><sup>4</sup> Tianjin University<br><sup>5</sup> University College London</span>
                     <span class="eql-cntrb"><small><br><sup>* </sup>Equal Contribution</small></span>
-                    <span class="eql-cntrb"><small><br><sup>† </sup>Corresponding authors: qingwu2@liverpool.ac.uk, shaokun2@huawei.com</small></span>
+                    <span class="eql-cntrb"><small><br><sup>† </sup>Corresponding authors: shaokun2@huawei.com</small></span>
                   </div>
 
                   <div class="column has-text-centered">
@@ -207,7 +207,7 @@
           <img src="static/images/overview.png" width="100%">
         
           <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
-            The pipeline of VSC-RL. (a) VLM autonomously decomposes the goal \( g \) to the subgoals \( \{sg_i\}_{i=1}^N \). 
+            Figure 1. The pipeline of VSC-RL. (a) VLM autonomously decomposes the goal \( g \) to the subgoals \( \{sg_i\}_{i=1}^N \). 
             VSC-RL optimizes the objective of SGC-ELBO consisting of (b) maximizing the subgoal-conditioned return and 
             (c) minimizing the subgoal-conditioned difference.
           </h2>
@@ -227,7 +227,7 @@
           <img src="static/images/example_subgoal_generator_vlm.png" width="100%">
         
           <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
-            Autonomous vision-language subgoal generation in AitW task. The vision-language model autonomously decomposes the goal of the complicated mobile device control task into easily achievable subgoals.
+            Figure 2. Autonomous vision-language subgoal generation in AitW task. The vision-language model autonomously decomposes the goal of the complicated mobile device control task into easily achievable subgoals.
           </h2>
 
           <p style="text-align: justify;">We employ Vision-Language Models (VLMs) to autonomously generate subgoals. Given a high-level goal \(g\), the VLM generates a set of feasible subgoals \( \{ sg_i \}_{i=1}^N \) that break down the task into simpler, achievable steps. The optimization objective for VSC-RL, using a VLM as the subgoal generator, can be written as:</p>
@@ -256,8 +256,8 @@
       <div class="columns is-centered">
         <div class="column is-four-fifths">
           <div class="content">         
-            To evaluate the efficacy of <b>VSC-RL</b>, we conducted extensive experiments on challenging vision-language decision-making benchmarks, 
-            particularly focusing on mobile device control tasks in the <b>AitW General</b> and <b>Web Shopping</b> datasets. Our results demonstrate that 
+            To evaluate the efficacy of <b>VSC-RL</b>, we conducted extensive experiments on challenging vision-language decision-making benchmarks.
+            Our results on mobile device and web control tasks in the <b>AitW General and Web Shopping</b> and <b>WebArena-Lite</b> seperately demonstrate that 
             VSC-RL significantly improves both <b>learning efficiency</b> and <b>task success rate</b> compared to state-of-the-art (SOTA) baselines.
           </div>
         </div>
@@ -271,16 +271,18 @@
         <div class="columns is-centered" style="text-align: center;">
           <div class="column is-12" style="text-align: center;">
             <img src="static/images/results-aitw.png" style="width: 70%; height: auto; object-fit: cover; margin: 0 auto;">
-            <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem; text-align: center; width: 70%; margin: 0 auto;">
-              VSC-RL significantly outperforms all baselines in both the AitW General and Web Shopping tasks, achieving a final success rate of 0.75 in the General task and 0.6 in the Web Shopping task, surpassing the best baseline DigiRL by 15% and 20% seperately.
+            <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem; text-align: center; width: 75%; margin: 0 auto;">
+              Figure 3. VSC-RL significantly outperforms all baselines in both the AitW General and Web Shopping tasks, achieving a final success rate of 0.75 in the General task and 0.6 in the Web Shopping task, surpassing the best baseline DigiRL by 15% and 20% seperately.
             </h2>
           </div>
         </div>
 
       </div>      
-      <br>
       <div class="columns is-centered">
         <div class="column is-four-fifths">
+          <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
+            Table 1. The evaluated performance on the train and test subsets of the AitW tasks. The best performance is <u><b>highlighted</b></u>.
+          </h2>
           <table id="results-table" border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
               <thead>
                 <tr>
@@ -306,7 +308,7 @@
                     <td style="padding:5px;">12.5%</td>
                     <td style="padding:5px;">53.9%</td>
                     <td style="padding:5px;">64.9%</td>
-                    <td style="padding:5px;"><b>73.9%</b></td>
+                    <td style="padding:5px;"><u><b>73.9%</b></u></td>
                 </tr>
                 <tr>
                   <td style="padding:5px;text-align: middle">Test</td>
@@ -316,7 +318,7 @@
                   <td style="padding:5px;">14.6%</td>
                   <td style="padding:5px;">62.5%</td>
                   <td style="padding:5px;">67.7%</td>
-                  <td style="padding:5px;"><b>72.9%</b></td>
+                  <td style="padding:5px;"><u><b>72.9%</b></u></td>
                 </tr>
                 <tr>
                     <td rowspan="4" style="padding:5px;vertical-align: middle">Web Shopping</td>
@@ -327,7 +329,7 @@
                     <td style="padding:5px;">14.6%</td>
                     <td style="padding:5px;">53.6%</td>
                     <td style="padding:5px;">55.3%</td>
-                    <td style="padding:5px;"><b>64.0%</b></td>
+                    <td style="padding:5px;"><u><b>64.0%</b></u></td>
                 </tr>
                 <tr>
                   <td style="padding:5px;text-align: middle">Test</td>
@@ -337,15 +339,104 @@
                   <td style="padding:5px;">17.7%</td>
                   <td style="padding:5px;">54.2%</td>
                   <td style="padding:5px;">41.3%</td>
-                  <td style="padding:5px;"><b>59.0%</b></td>
+                  <td style="padding:5px;"><u><b>59.0%</b></u></td>
                 </tr>
             </tbody>
           </table>
-          <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
-            The evaluated performance on the train and test datasets of the General and Web Shopping tasks. The best performance is in bold.
-          </h2>
+          
 
           <br>
+          <br>
+        <div class="columns is-centered" style="text-align: center;">
+          <div class="column is-12" style="text-align: center;">
+            <img src="static/images/results-web.png" style="width: 45%; height: auto; object-fit: cover; margin: 0 auto;">
+            <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem; text-align: center; width: 75%; margin: 0 auto;">
+              Figure 4. VSC-RL achieves superior learning efficiency and final performance on the WebArena-Lite. It consistently outperforms the other methods, achieving the highest success rate of approximately 34.5%.
+            </h2>
+          </div>
+        </div>
+
+
+          <div class="columns is-centered">
+            <div class="column is-four-fifths">
+              <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 1rem;">
+                Table 2. The evaluated performance on WebArena-Lite. The best performance is <u><b>highlighted</b></u>.
+              </h2>
+              <table id="results-table" border="1" cellpadding="5" cellspacing="0" style="width:100%; border-collapse:collapse;">
+                <thead>
+                  <tr>
+                    <th rowspan="2" style="padding:5px; border-right:2px solid black; text-align:center; vertical-align:middle;">
+                      <div style="padding-top:18px;">Method</div>
+                    </th>
+                    <th colspan="6" style="padding:5px;">Task (# Ratio)</th>
+                  </tr>
+                  <tr>
+                    <th style="padding:5px;">Reddit<br><span style="font-weight:normal;">(12.7%)</span></th>
+                    <th style="padding:5px;">Gitlab<br><span style="font-weight:normal;">(19.4%)</span></th>
+                    <th style="padding:5px;">CMS<br><span style="font-weight:normal;">(21.2%)</span></th>
+                    <th style="padding:5px;">Map<br><span style="font-weight:normal;">(18.8%)</span></th>
+                    <th style="padding:5px;">OSS<br><span style="font-weight:normal;">(27.9%)</span></th>
+                    <th style="padding:5px;">All<br><span style="font-weight:normal;">(100.0%)</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding:5px; border-right:2px solid black;">SFT</td>
+                    <td style="padding:5px;">36.8%</td>
+                    <td style="padding:5px;">6.7%</td>
+                    <td style="padding:5px;">20.0%</td>
+                    <td style="padding:5px;">33.3%</td>
+                    <td style="padding:5px;">17.8%</td>
+                    <td style="padding:5px;">20.6%</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px; border-right:2px solid black;">Filtered BC</td>
+                    <td style="padding:5px;">52.6%</td>
+                    <td style="padding:5px;">20.0%</td>
+                    <td style="padding:5px;">31.4%</td>
+                    <td style="padding:5px;">23.3%</td>
+                    <td style="padding:5px;">8.9%</td>
+                    <td style="padding:5px;">23.0%</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px; border-right:2px solid black;">AWR</td>
+                    <td style="padding:5px;">57.9%</td>
+                    <td style="padding:5px;">26.7%</td>
+                    <td style="padding:5px;">31.4%</td>
+                    <td style="padding:5px;">26.7%</td>
+                    <td style="padding:5px;">17.8%</td>
+                    <td style="padding:5px;">28.5%</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px; border-right:2px solid black;">DigiRL</td>
+                    <td style="padding:5px;">52.4%</td>
+                    <td style="padding:5px;">28.1%</td>
+                    <td style="padding:5px;">37.1%</td>
+                    <td style="padding:5px;">32.3%</td>
+                    <td style="padding:5px;">15.2%</td>
+                    <td style="padding:5px;">30.3%</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px; border-right:2px solid black;">WebRL</td>
+                    <td style="padding:5px;">57.1%</td>
+                    <td style="padding:5px;">28.1%</td>
+                    <td style="padding:5px;">34.3%</td>
+                    <td style="padding:5px;"><u><b>35.5%</b></u></td>
+                    <td style="padding:5px;">15.2%</td>
+                    <td style="padding:5px;">30.9%</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px; border-right:2px solid black;"><b>VSC-RL (ours)</b></td>
+                    <td style="padding:5px;"><u><b>61.9%</b></u></td>
+                    <td style="padding:5px;"><u><b>31.3%</b></u></td>
+                    <td style="padding:5px;"><u><b>40.0%</b></u></td>
+                    <td style="padding:5px;"><u><b>35.5%</b></u></td>
+                    <td style="padding:5px;"><u><b>19.6%</b></u></td>
+                    <td style="padding:5px;"><u><b>34.5%</b></u></td>
+                  </tr>
+                </tbody>
+              </table>
+              
 
           <div class="content">
             <h3 class="subtitle is-6" style="margin-top: 1rem;">For full results and more details, please refer to our <a href="https://arxiv_link" target="_blank" style="color:#3273dc;">paper</a>.</h3>
