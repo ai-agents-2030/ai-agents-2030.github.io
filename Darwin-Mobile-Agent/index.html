@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darwin Mobile Agent | Self-Evolution for GUI Agents</title>
+    <meta name="description" content="Darwin Mobile Agent: An open-source infrastructure for autonomous reinforcement learning in mobile GUI environments.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+    
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606070;
+            --accent-cyan: #00d4ff;
+            --accent-purple: #a855f7;
+            --accent-pink: #ec4899;
+            --accent-green: #22c55e;
+            --accent-orange: #f97316;
+            --gradient-main: linear-gradient(135deg, #00d4ff 0%, #a855f7 50%, #ec4899 100%);
+            --gradient-glow: linear-gradient(135deg, rgba(0,212,255,0.15) 0%, rgba(168,85,247,0.15) 50%, rgba(236,72,153,0.15) 100%);
+            --font-display: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --border-radius: 16px;
+            --transition-fast: 0.2s ease;
+            --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-display);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Background Effects */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .bg-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .bg-glow-1 {
+            top: -200px;
+            right: -100px;
+            background: var(--accent-cyan);
+        }
+
+        .bg-glow-2 {
+            bottom: 20%;
+            left: -200px;
+            background: var(--accent-purple);
+        }
+
+        .bg-glow-3 {
+            bottom: -100px;
+            right: 20%;
+            background: var(--accent-pink);
+            width: 400px;
+            height: 400px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-icon {
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 12px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-main);
+            color: white;
+            box-shadow: 0 4px 20px rgba(0,212,255,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,212,255,0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-primary);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(0,212,255,0.1);
+            border: 1px solid rgba(0,212,255,0.2);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            margin-bottom: 32px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.6s ease 0.1s both;
+        }
+
+        .hero h1 .gradient-text {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.6s ease 0.3s both;
+        }
+
+        .hero-image {
+            animation: fadeInUp 0.6s ease 0.4s both;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hero-image img {
+            width: 100%;
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-cyan);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-main);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon.cyan { background: rgba(0,212,255,0.15); }
+        .feature-icon.purple { background: rgba(168,85,247,0.15); }
+        .feature-icon.pink { background: rgba(236,72,153,0.15); }
+        .feature-icon.green { background: rgba(34,197,94,0.15); }
+        .feature-icon.orange { background: rgba(249,115,22,0.15); }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Roadmap */
+        .roadmap-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .roadmap-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .roadmap-column h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.25rem;
+            margin-bottom: 24px;
+        }
+
+        .roadmap-column h3 .icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .roadmap-column.completed h3 .icon {
+            background: rgba(34,197,94,0.15);
+        }
+
+        .roadmap-column.planned h3 .icon {
+            background: rgba(249,115,22,0.15);
+        }
+
+        .roadmap-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .roadmap-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            transition: all var(--transition-fast);
+        }
+
+        .roadmap-item:hover {
+            border-color: rgba(255,255,255,0.1);
+            transform: translateX(4px);
+        }
+
+        .roadmap-item .check {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .roadmap-column.completed .check {
+            background: var(--accent-green);
+            color: white;
+        }
+
+        .roadmap-column.planned .check {
+            background: rgba(255,255,255,0.1);
+            border: 2px dashed rgba(255,255,255,0.2);
+        }
+
+        /* Code Block */
+        .code-section {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 24px;
+            background: rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .code-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .code-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .code-dots span:nth-child(1) { background: #ff5f57; }
+        .code-dots span:nth-child(2) { background: #febc2e; }
+        .code-dots span:nth-child(3) { background: #28c840; }
+
+        .code-title {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .code-content {
+            padding: 24px;
+            overflow-x: auto;
+        }
+
+        .code-content pre {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .code-content .comment {
+            color: var(--text-muted);
+        }
+
+        .code-content .command {
+            color: var(--accent-cyan);
+        }
+
+        .code-content .string {
+            color: var(--accent-green);
+        }
+
+        /* Results Section */
+        .results-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .results-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .results-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .results-text p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .results-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .results-image img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Docs Grid */
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .doc-card {
+            display: block;
+            padding: 24px;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 14px;
+            text-decoration: none;
+            transition: all var(--transition-smooth);
+        }
+
+        .doc-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px rgba(0,212,255,0.1);
+        }
+
+        .doc-card h4 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .doc-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Acknowledgements */
+        .ack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .ack-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .ack-item:hover {
+            border-color: rgba(255,255,255,0.15);
+            background: var(--bg-tertiary);
+        }
+
+        .ack-item .icon {
+            font-size: 1.5rem;
+        }
+
+        .ack-item span {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Citation */
+        .citation-box {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            position: relative;
+        }
+
+        .citation-box pre {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links, .nav-cta {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* News Badge */
+        .news-section {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--border-radius);
+            padding: 24px 32px;
+            margin-bottom: 40px;
+        }
+
+        .news-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .news-date {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            background: rgba(0,212,255,0.1);
+            padding: 4px 12px;
+            border-radius: 6px;
+        }
+
+        .news-text {
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🧬</span>
+                Darwin Agent
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#quickstart">Quick Start</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#docs">Docs</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="./Darwin_Mobile_Agent_A_Roadmap_for_Self-Evolution.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                    📄 Paper
+                </a>
+                <a href="https://github.com/ai-agents-2030/darwin-mobile-agent" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    ⭐ GitHub
+                </a>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="pulse"></span>
+                    Open Source Infrastructure
+                </div>
+                <h1>
+                    <span class="gradient-text">Darwin</span> Mobile Agent
+                    <br>A Roadmap for Self-Evolution
+                </h1>
+                <p class="hero-subtitle">
+                    An open-source infrastructure designed as a foundation for autonomous reinforcement learning in mobile GUI environments. Building truly autonomous, self-evolving agents.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://github.com/ai-agents-2030/darwin-mobile-agent" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        🚀 Get Started
+                    </a>
+                    <a href="./Darwin_Mobile_Agent_A_Roadmap_for_Self-Evolution.pdf" class="btn btn-secondary" target="_blank">
+                        📄 Read Paper
+                    </a>
+                </div>
+                <div class="hero-image">
+                    <img src="./assets/diagram.png" alt="Darwin Mobile Agent Architecture">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section style="padding-top: 0;">
+        <div class="container">
+            <div class="news-section animate-on-scroll">
+                <div class="news-item">
+                    <span class="news-date">2025.12.22</span>
+                    <span class="news-text">🎉 Initial release of Darwin Mobile Agent and paper</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Capabilities</span>
+                <h2 class="section-title">Key Features</h2>
+                <p class="section-desc">A comprehensive framework for building self-evolving GUI agents</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon cyan">🌍</div>
+                    <h3>"Big World" GUI</h3>
+                    <p>Mobile GUI as an experimentally tractable, open-ended "Big World" proxy for general intelligence emergence.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon purple">⚡</div>
+                    <h3>Async Architecture</h3>
+                    <p>Enables efficient parallelization by pipelining model inference and environment execution to hide interaction latency.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon pink">🧬</div>
+                    <h3>Self-Evolution</h3>
+                    <p>Systematic removal of human priors from Task Curriculum, Outcome Verification, and Agent State (Memory).</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon green">🔄</div>
+                    <h3>Task Lifecycle</h3>
+                    <p>Automated Setup → Execution → Teardown protocol to internalize environment state management.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon orange">☁️</div>
+                    <h3>Cloud-Native Fleet</h3>
+                    <p>Stable infrastructure using cloud Android devices via Alibaba Cloud instead of local emulators.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon cyan">✅</div>
+                    <h3>Smart Verification</h3>
+                    <p>LLM-based semantic verification to drive rewards for open-ended tasks without programmatic state access.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Progress</span>
+                <h2 class="section-title">Roadmap</h2>
+                <p class="section-desc">Track our journey towards fully autonomous agents</p>
+            </div>
+            <div class="roadmap-container animate-on-scroll">
+                <div class="roadmap-column completed">
+                    <h3>
+                        <span class="icon">✅</span>
+                        Completed
+                    </h3>
+                    <ul class="roadmap-list">
+                        <li class="roadmap-item">
+                            <span class="check">✓</span>
+                            Cloud phone infrastructure with Alibaba Cloud EDS
+                        </li>
+                        <li class="roadmap-item">
+                            <span class="check">✓</span>
+                            Multi-model support (UI-TARS, Qwen3-VL)
+                        </li>
+                        <li class="roadmap-item">
+                            <span class="check">✓</span>
+                            Asynchronous agent-environment loop
+                        </li>
+                        <li class="roadmap-item">
+                            <span class="check">✓</span>
+                            Curriculum-based task sampling
+                        </li>
+                        <li class="roadmap-item">
+                            <span class="check">✓</span>
+                            LLM-based outcome verification
+                        </li>
+                        <li class="roadmap-item">
+                            <span class="check">✓</span>
+                            Task lifecycle protocol (setup-task-cleanup)
+                        </li>
+                    </ul>
+                </div>
+                <div class="roadmap-column planned">
+                    <h3>
+                        <span class="icon">📋</span>
+                        Planned
+                    </h3>
+                    <ul class="roadmap-list">
+                        <li class="roadmap-item">
+                            <span class="check"></span>
+                            Pre-trained model checkpoints release
+                        </li>
+                        <li class="roadmap-item">
+                            <span class="check"></span>
+                            Extended task benchmark
+                        </li>
+                        <li class="roadmap-item">
+                            <span class="check"></span>
+                            Multi-device coordination
+                        </li>
+                        <li class="roadmap-item">
+                            <span class="check"></span>
+                            Automated task generation (LLM-based)
+                        </li>
+                        <li class="roadmap-item">
+                            <span class="check"></span>
+                            Knowledge distillation & Memory Management
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start Section -->
+    <section id="quickstart">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Getting Started</span>
+                <h2 class="section-title">Quick Start</h2>
+                <p class="section-desc">Get up and running in minutes</p>
+            </div>
+            <div class="code-section animate-on-scroll">
+                <div class="code-header">
+                    <div class="code-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span class="code-title">Terminal</span>
+                </div>
+                <div class="code-content">
+<pre><span class="comment"># 1. Clone and install</span>
+<span class="command">git clone</span> <span class="string">https://github.com/ai-agents-2030/darwin-mobile-agent.git</span>
+<span class="command">cd</span> darwin-mobile-agent
+<span class="command">pip install</span> -e .
+
+<span class="comment"># 2. Install dependencies</span>
+<span class="command">pip install</span> vllm==0.8.5 trl==0.25.1 <span class="string">"transformers>=4.57.0"</span>
+
+<span class="comment"># 3. Configure cloud phones (see docs for details)</span>
+<span class="comment"># Edit your device addresses in the training script</span>
+
+<span class="comment"># 4. Run training</span>
+<span class="command">bash</span> examples/darwin_agent/run_spabench_ui_tars.sh</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Validation</span>
+                <h2 class="section-title">Results</h2>
+            </div>
+            <div class="results-content animate-on-scroll">
+                <div class="results-text">
+                    <h3>Stable Policy Optimization</h3>
+                    <p>We evaluate the stability of the Darwin Mobile Agent infrastructure in a controlled reinforcement learning setting. Eight tasks are executed concurrently across eight cloud phones, enabling parallel data collection.</p>
+                    <p>The agent demonstrates a clear and consistent improvement in mean task success rate. Despite operating on real devices with inherent latency and asynchronous agent–environment interactions, the training process remains stable with no observable divergence or performance collapse.</p>
+                    <p>This indicates that the Darwin infrastructure can reliably sustain end-to-end policy optimisation in the mobile GUI domain.</p>
+                </div>
+                <div class="results-image">
+                    <img src="./assets/e1_sr.png" alt="Training Success Rate Chart">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="docs">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Learn More</span>
+                <h2 class="section-title">Documentation</h2>
+                <p class="section-desc">Comprehensive guides to help you get started</p>
+            </div>
+            <div class="docs-grid animate-on-scroll">
+                <a href="https://github.com/ai-agents-2030/darwin-mobile-agent/blob/main/docs/darwin_agent/README.md" class="doc-card" target="_blank">
+                    <h4>📖 Getting Started</h4>
+                    <p>Overview and quick start guide</p>
+                </a>
+                <a href="https://github.com/ai-agents-2030/darwin-mobile-agent/blob/main/docs/darwin_agent/SETUP_LOCAL.md" class="doc-card" target="_blank">
+                    <h4>💻 Local Setup</h4>
+                    <p>Python environment, ADB, dependencies</p>
+                </a>
+                <a href="https://github.com/ai-agents-2030/darwin-mobile-agent/blob/main/docs/darwin_agent/SETUP_CLOUD_DEVICES.md" class="doc-card" target="_blank">
+                    <h4>☁️ Cloud Devices</h4>
+                    <p>Alibaba Cloud phone configuration</p>
+                </a>
+                <a href="https://github.com/ai-agents-2030/darwin-mobile-agent/blob/main/docs/darwin_agent/TASK_BENCHMARKS.md" class="doc-card" target="_blank">
+                    <h4>📋 Task Benchmarks</h4>
+                    <p>Available tasks and custom task creation</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acknowledgements Section -->
+    <section style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Thanks</span>
+                <h2 class="section-title">Acknowledgements</h2>
+                <p class="section-desc">Built upon excellent open-source projects</p>
+            </div>
+            <div class="ack-grid animate-on-scroll">
+                <a href="https://github.com/langfengQ/verl-agent" class="ack-item" target="_blank">
+                    <span class="icon">🔄</span>
+                    <span>verl-agent</span>
+                </a>
+                <a href="https://github.com/volcengine/verl" class="ack-item" target="_blank">
+                    <span class="icon">⚙️</span>
+                    <span>veRL</span>
+                </a>
+                <a href="https://github.com/google-research/android_world" class="ack-item" target="_blank">
+                    <span class="icon">🤖</span>
+                    <span>Android World</span>
+                </a>
+                <a href="https://github.com/ai-agents-2030/SPA-Bench" class="ack-item" target="_blank">
+                    <span class="icon">📱</span>
+                    <span>SPA-Bench</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Citation Section -->
+    <section id="citation">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Reference</span>
+                <h2 class="section-title">Citation</h2>
+                <p class="section-desc">If you use Darwin Mobile Agent in your research, please cite</p>
+            </div>
+            <div class="citation-box animate-on-scroll">
+                <button class="copy-btn" onclick="copyBibtex()">📋 Copy</button>
+<pre id="bibtex">@article{darwin2025,
+  title={Darwin Mobile Agent: A Roadmap for Self-Evolution},
+  author={Beechey, Daniel and Yuen, Derek and Liu, Jianheng and Luo, Dezhao and He, Tiantian and Luo, Weilin and Wang, Jun and Shao, Kun},
+  journal={arXiv preprint},
+  year={2025}
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://github.com/ai-agents-2030/darwin-mobile-agent" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="./Darwin_Mobile_Agent_A_Roadmap_for_Self-Evolution.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+                    <a href="https://github.com/ai-agents-2030/darwin-mobile-agent/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+                    <a href="https://github.com/ai-agents-2030/darwin-mobile-agent/tree/main/docs/darwin_agent" target="_blank">Documentation</a>
+                </div>
+                <p class="footer-copyright">
+                    Darwin Mobile Agent © 2025 · Licensed under Apache 2.0
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Copy bibtex
+        function copyBibtex() {
+            const bibtex = document.getElementById('bibtex').textContent;
+            navigator.clipboard.writeText(bibtex).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.textContent = '✓ Copied!';
+                setTimeout(() => {
+                    btn.textContent = '📋 Copy';
+                }, 2000);
+            });
+        }
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
