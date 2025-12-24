@@ -744,6 +744,71 @@
             }
         }
 
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 15, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-smooth);
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 8px;
+            line-height: 1;
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .mobile-menu-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+
+        .mobile-menu-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .mobile-menu-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
         /* Scroll Animations */
         .animate-on-scroll {
             opacity: 0;
@@ -813,9 +878,29 @@
                     ⭐ GitHub
                 </a>
             </div>
-            <button class="mobile-menu-btn">☰</button>
+            <button class="mobile-menu-btn" onclick="openMobileMenu()">☰</button>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+        <ul class="mobile-menu-links">
+            <li><a href="#features" onclick="closeMobileMenu()">Features</a></li>
+            <li><a href="#roadmap" onclick="closeMobileMenu()">Roadmap</a></li>
+            <li><a href="#quickstart" onclick="closeMobileMenu()">Quick Start</a></li>
+            <li><a href="#results" onclick="closeMobileMenu()">Results</a></li>
+            <li><a href="#docs" onclick="closeMobileMenu()">Docs</a></li>
+        </ul>
+        <div class="mobile-menu-cta">
+            <a href="./tech_report.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu()">
+                📄 Paper
+            </a>
+            <a href="https://github.com/ai-agents-2030/darwin-mobile-agent" class="btn btn-primary" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu()">
+                ⭐ GitHub
+            </a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1170,6 +1255,24 @@
                     });
                 }
             });
+        });
+
+        // Mobile menu functions
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
         });
     </script>
 </body>
